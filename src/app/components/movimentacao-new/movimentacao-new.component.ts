@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CorrentistaService } from 'src/app/services/correntista.service';
 import { MovimentacaoService } from 'src/app/services/movimentacao.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-movimentacao-new',
@@ -10,7 +13,7 @@ import { MovimentacaoService } from 'src/app/services/movimentacao.service';
 })
 export class MovimentacaoNewComponent implements OnInit {
 
-  
+
 
   correntistas:any;
   correntista:any;
@@ -21,8 +24,11 @@ export class MovimentacaoNewComponent implements OnInit {
   tipo: any;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private movimentacaoService: MovimentacaoService,
     private correntistaService: CorrentistaService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -52,18 +58,26 @@ export class MovimentacaoNewComponent implements OnInit {
     }
 
   console.log(movimentacao)
+
+
   this.movimentacaoService.create(movimentacao)
   .subscribe(
     response => {
       console.log(response);
+      this.toastr.success("Movimentação realizada com sucesso!")
+      this.goBack();
     },
     error => {
       console.log(error);
+      this.toastr.error("Não foi possível realizar a movimentação")
     }
   )
 
+
   }
 
-
+  goBack(): void {
+    this.router.navigate(['/'], { relativeTo: this.route });
+  }
 
 }

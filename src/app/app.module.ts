@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { MovimentacaoListComponent } from './components/movimentacao-list/movimentacao-list.component';
 import { MovimentacaoNewComponent } from './components/movimentacao-new/movimentacao-new.component';
 import { CorrentistaComponent } from './components/correntista/correntista.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData(localePt);
@@ -29,7 +31,9 @@ registerLocaleData(localePt);
     NgbModule,
     FormsModule,
     HttpClientModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]

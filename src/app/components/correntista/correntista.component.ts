@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CorrentistaService } from 'src/app/services/correntista.service';
 
 @Component({
@@ -11,7 +12,9 @@ export class CorrentistaComponent {
   nome:any;
   correntistas: any;
 
-  constructor(private correntistaService: CorrentistaService) {}
+  constructor(
+    private correntistaService: CorrentistaService,
+    private toastr: ToastrService) {}
 
   ngOnInit(): void{
     this.exibirCorrentistas();
@@ -40,9 +43,11 @@ export class CorrentistaComponent {
       response => {
         console.log(response)
         this.exibirCorrentistas()
+        this.toastr.success("Correntista cadastrado com sucesso!")
       },
       error => {
         console.log(error)
+        this.toastr.error("Não foi possível cadastrar o correntista!")
       }
     )
   }
