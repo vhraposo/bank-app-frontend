@@ -30,8 +30,8 @@
       </div>
 
       <div class="col-md-2">
-        <label for="iValor" currencyMask class="form-label">R$ Valor</label>
-        <input type="text" class="form-control" id="iValor">
+        <label for="iValor"  class="form-label">R$ Valor</label>
+        <input type="text" currencyMask [options]="{prefix: 'R$', thousands: '.', decimal: ','}" class="form-control" id="iValor">
       </div>
 
 
