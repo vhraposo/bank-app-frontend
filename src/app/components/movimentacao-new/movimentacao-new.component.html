@@ -12,8 +12,7 @@
       <div class="col-md-9">
         <label for="iCorrentista" class="form-label">Correntista</label>
         <select id="iCorrentista" class="form-select">
-          <option selected>Escolher...</option>
-          <option>...</option>
+          <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
         </select>
       </div>
       <div class="col-12">
