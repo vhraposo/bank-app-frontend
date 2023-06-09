@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovimentacaoListComponent } from './components/movimentacao-list/movimentacao-list.component';
 import { MovimentacaoNewComponent } from './components/movimentacao-new/movimentacao-new.component';
+import { CorrentistaComponent } from './components/correntista/correntista.component';
 
 
 registerLocaleData(localePt);
@@ -19,7 +20,8 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     MovimentacaoListComponent,
-    MovimentacaoNewComponent
+    MovimentacaoNewComponent,
+    CorrentistaComponent
   ],
   imports: [
     BrowserModule,
