@@ -6,8 +6,12 @@ import { MovimentacaoService } from 'src/app/services/movimentacao.service';
   selector: 'app-movimentacao-new',
   templateUrl: './movimentacao-new.component.html',
   styleUrls: ['./movimentacao-new.component.css']
+
 })
 export class MovimentacaoNewComponent implements OnInit {
+
+  
+
   correntistas:any;
   correntista:any;
 
@@ -59,5 +63,7 @@ export class MovimentacaoNewComponent implements OnInit {
   )
 
   }
+
+
 
 }
