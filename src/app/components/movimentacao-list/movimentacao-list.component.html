@@ -1,6 +1,19 @@
 <div class="container">
+  <div class="jumbotron">
+    <h1 class="display-6">Movimentações</h1>
+    <p class="lead-1">Listagem das movimentações por correntista</p>
+    <hr class="my-2">
+    <div class="input-group">
+      <select id="iCorrentista" [(ngModel)]="correntista" class="form-select">
+        <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
 
-  <a class="btn btn-outline-primary btn-sm" routerLink="/movimentacoes-new">Nova Movimentação</a>
+      </select>
+      <button class="btn btn-outline-secondary me-md-2 btn-sm" type="button" (click) = "listMovimentacoes()" >Buscar</button>
+      <a class="btn btn-outline-primary btn-sm" routerLink="/movimentacoes-new">Nova Movimentação</a>
+      <a class="btn btn-outline-primary btn-sm" routerLink="/correntistas">Correntistas</a>
+
+    </div>
+
 
   <table class="table table-striped">
     <thead>
@@ -23,4 +36,5 @@
     </tbody>
 
   </table>
+</div>
 </div>
