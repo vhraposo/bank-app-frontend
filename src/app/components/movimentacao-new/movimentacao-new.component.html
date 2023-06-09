@@ -11,7 +11,7 @@
       </div>
       <div class="col-md-9">
         <label for="iCorrentista" class="form-label">Correntista</label>
-        <select id="iCorrentista" class="form-select">
+        <select id="iCorrentista" [(ngModel)]="correntista" class="form-select">
           <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
         </select>
       </div>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="col-md-2">
-        <label for="iValor" class="form-label">R$ Valor</label>
+        <label for="iValor" currencyMask class="form-label">R$ Valor</label>
         <input type="text" class="form-control" id="iValor">
       </div>
 

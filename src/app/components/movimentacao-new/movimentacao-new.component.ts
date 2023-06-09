@@ -9,6 +9,8 @@ import { MovimentacaoService } from 'src/app/services/movimentacao.service';
 })
 export class MovimentacaoNewComponent implements OnInit {
   correntistas:any;
+  correntista:any;
+
   constructor(
     private movimentacaoService: MovimentacaoService,
     private correntistaService: CorrentistaService,
