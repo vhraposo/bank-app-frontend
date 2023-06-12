@@ -6,12 +6,14 @@ import { MovimentacaoListComponent } from './components/movimentacao-list/movime
 import { CorrentistaComponent } from './components/correntista/correntista.component';
 
 import { UserLoginComponent } from './components/user-login/user-login.component'
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 
 const routes: Routes = [
   { path: 'movimentacoes-new', component: MovimentacaoNewComponent },
   { path: 'movimentacoes', component: MovimentacaoListComponent},
   { path: 'correntistas', component: CorrentistaComponent},
+  { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: UserLoginComponent }, // Adicione a rota para o componente de login
   { path: '', redirectTo: 'login', pathMatch: 'full'}, // Redirecione a rota raiz ('') para a tela de login
 ];

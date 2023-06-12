@@ -15,6 +15,7 @@ import { CorrentistaComponent } from './components/correntista/correntista.compo
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 
 registerLocaleData(localePt);
@@ -25,7 +26,8 @@ registerLocaleData(localePt);
     MovimentacaoListComponent,
     MovimentacaoNewComponent,
     CorrentistaComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,

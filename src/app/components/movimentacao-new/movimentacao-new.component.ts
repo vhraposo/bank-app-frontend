@@ -65,7 +65,8 @@ export class MovimentacaoNewComponent implements OnInit {
     response => {
       console.log(response);
       this.toastr.success("Movimentação realizada com sucesso!")
-      this.goBack();
+      this.router.navigate(['/movimentacoes']);
+
     },
     error => {
       console.log(error);
