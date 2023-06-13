@@ -30,7 +30,7 @@
           </div>
           <div class="col-md-4">
             <label for="iValor"  class="form-label">R$ Valor</label>
-            <input type="text" [(ngModel)]="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" id="iValor">
+            <input autocomplete="off" type="text" [(ngModel)]="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" id="iValor">
           </div>
           <div class="d-grid gap-2 d-md-flex ">
               <button class="btn btn-outline-primary me-md-2" (click)="save()" type="button">Confirmar</button>
