@@ -11,36 +11,53 @@ export class MovimentacaoListComponent implements OnInit {
   movimentacoes: any;
   correntistas: any;
   correntista: any;
+  listagemTitle?: string;
 
-  constructor(private movimentacaoService: MovimentacaoService,
-    private correntistaService: CorrentistaService ){}
+  constructor(
+    private movimentacaoService: MovimentacaoService,
+    private correntistaService: CorrentistaService
+  ) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.exibirCorrentistas();
+    this.listMovimentacoes();
   }
 
-  exibirCorrentistas(): void{
-    this.correntistaService.list()
-    .subscribe(
+  exibirCorrentistas(): void {
+    this.correntistaService.list().subscribe(
       data => {
         this.correntistas = data;
         console.log(data);
       },
       error => {
         console.log(error);
-      })
+      }
+    );
   }
 
-
   listMovimentacoes(): void {
-    this.movimentacaoService.findByIdConta(this.correntista.id)
-    .subscribe(
-      data => {
-        this.movimentacoes = data;
-        console.log(data)
-      },
-      error => {
-        console.log(error)
-      })
+    if (this.correntista) {
+      this.movimentacaoService.findByIdConta(this.correntista.id).subscribe(
+        data => {
+          this.movimentacoes = data;
+          this.listagemTitle = 'Listagem das movimentações por correntista';
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.movimentacaoService.list().subscribe(
+        data => {
+          this.movimentacoes = data;
+          this.listagemTitle = 'Listagem de todas as movimentações';
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
