@@ -12,6 +12,8 @@ export class MovimentacaoListComponent implements OnInit {
   correntistas: any;
   correntista: any;
   listagemTitle?: string;
+  totalReceitas: number = 0;
+  totalDespesas: number = 0;
 
   constructor(
     private movimentacaoService: MovimentacaoService,
@@ -40,6 +42,7 @@ export class MovimentacaoListComponent implements OnInit {
       this.movimentacaoService.findByIdConta(this.correntista.id).subscribe(
         data => {
           this.movimentacoes = data;
+          this.calcularTotais();
           this.listagemTitle = 'Listagem das movimentações por correntista';
           console.log(data);
         },
@@ -51,6 +54,7 @@ export class MovimentacaoListComponent implements OnInit {
       this.movimentacaoService.list().subscribe(
         data => {
           this.movimentacoes = data;
+          this.calcularTotais();
           this.listagemTitle = 'Listagem de todas as movimentações';
           console.log(data);
         },
@@ -60,4 +64,14 @@ export class MovimentacaoListComponent implements OnInit {
       );
     }
   }
+  calcularTotais(): void {
+    this.totalReceitas = this.movimentacoes
+      .filter((item: any) => item.tipo === 'RECEITA')
+      .reduce((acc: number, item: any) => acc + item.valor, 0);
+
+    this.totalDespesas = this.movimentacoes
+      .filter((item: any) => item.tipo === 'DESPESA')
+      .reduce((acc: number, item: any) => acc + item.valor, 0);
+  }
+
 }
