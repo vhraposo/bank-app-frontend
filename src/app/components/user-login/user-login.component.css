@@ -5,15 +5,17 @@ body {
 }
 
 .container {
-  background-color: #333;
+  background-color: #4e534e;
   padding: 20px;
   border-radius: 10px;
   margin: 50px auto;
   width: 400px;
+
 }
 
 h1 {
-  color: red;
+  color: #f25042;
+  text-align: center;
 }
 
 .form-label {
@@ -29,16 +31,25 @@ h1 {
   margin-bottom: 10px;
 }
 
+.btnlog{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-primary {
-  background-color: red;
+  background-color: #f25042;
   color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+
 }
 
 .btn-primary:hover {
-  background-color: darkred;
+  background-color: #df3223;
 }
 
