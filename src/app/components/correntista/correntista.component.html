@@ -2,7 +2,6 @@
   <div class="jumbotron">
     <div class="alo  d-flex justify-content-between gap-2 align-items-center">
       <h1 class="display-7 ">Correntistas</h1>
-
       <div class="botoes d-flex gap-3 ">
         <a class="btn btn-outline-primary btn-sm " routerLink="/cadastro">Novo Correntista</a>
         <a class="btn btn-outline-primary btn-sm" routerLink="/movimentacoes-new">Nova Movimentação</a>
@@ -16,6 +15,7 @@
             <h5 class="card-title">{{item.nome}}</h5>
             <p class="card-text">Conta N° {{item.conta.numero}}</p>
             <p class="card-text">Saldo {{item.conta.saldo | currency:'BRL'}}</p>
+            <button class="btn btn-primary btn-sm" (click)="gerarRelatorio(item)">Gerar Relatório de Despesas</button>
           </div>
         </div>
       </div>
