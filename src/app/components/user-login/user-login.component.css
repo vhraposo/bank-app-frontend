@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  background-color: #4e534e;
+  background-color: #7e837e;
   padding: 20px;
   border-radius: 10px;
   margin: 50px auto;
@@ -23,7 +23,7 @@ h1 {
 }
 
 .form-control {
-  background-color: #444;
+  background-color: #c2c2c2;
   color: #fff;
   border: none;
   padding: 10px;
@@ -53,3 +53,14 @@ h1 {
   background-color: #df3223;
 }
 
+.logos{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 30px;
+}
+.logos img{
+  max-height: 50px;
+  height: auto;
+
+}
