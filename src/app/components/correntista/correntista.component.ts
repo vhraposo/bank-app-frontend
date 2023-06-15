@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CorrentistaService } from 'src/app/services/correntista.service';
 import { jsPDF } from 'jspdf';
@@ -41,6 +41,7 @@ export class CorrentistaComponent {
 
   save(): void{
     const correntista = {
+      id: null,
       cpf:this.cpf,
       nome:this.nome
     }
@@ -66,6 +67,11 @@ export class CorrentistaComponent {
     doc.setFontSize(20);
     doc.text('Movimentações do Usuário', 10, 20);
 
+    doc.setFontSize(16);
+    doc.text(`Nome: ${item.nome}`, 10, 40);
+    doc.text(`Conta N°: ${item.conta.numero}`, 10, 50);
+    doc.text(`Saldo: R$ ${item.conta.saldo }`, 10, 60);
+
     //buscando as movimentações no bd
     this.movimentacaoService.findByIdConta(item.id).subscribe(
 
@@ -80,8 +86,8 @@ export class CorrentistaComponent {
 
         // aqui vai adicionar  as despesas no pdf
         doc.setFontSize(16);
-        doc.text('Despesas:', 10, 40);
-        let posY = 50;
+        doc.text('Despesas:', 10, 80);
+        let posY = 90;
         despesas.forEach((despesa: any) => {
           doc.text(`${despesa.descricao}: ${despesa.valor}`, 10, posY);
           posY += 10;
