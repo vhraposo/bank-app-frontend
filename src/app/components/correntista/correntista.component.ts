@@ -61,16 +61,16 @@ export class CorrentistaComponent {
   }
 
   gerarRelatorio(item: any): void {
-    const doc = new jsPDF();
+    const doc = new jsPDF()
 
     // corpo do pdf
     doc.setFontSize(20);
-    doc.text('Movimentações do Usuário', 10, 20);
+    doc.text('Movimentações do Usuário', 10, 20)
 
     doc.setFontSize(16);
-    doc.text(`Nome: ${item.nome}`, 10, 40);
-    doc.text(`Conta N°: ${item.conta.numero}`, 10, 50);
-    doc.text(`Saldo: R$ ${item.conta.saldo }`, 10, 60);
+    doc.text(`Nome: ${item.nome}`, 10, 40)
+    doc.text(`Conta N°: ${item.conta.numero}`, 10, 50)
+    doc.text(`Saldo atual: R$ ${item.conta.saldo }`, 10, 60)
 
     //buscando as movimentações no bd
     this.movimentacaoService.findByIdConta(item.id).subscribe(
@@ -81,25 +81,25 @@ export class CorrentistaComponent {
 
         console.log('hello',this.movimentacoes )
         //  pegando as receitas e despesas
-        const despesas = this.movimentacoes.filter((item: any) => item.tipo === 'DESPESA');
-        const receitas = this.movimentacoes.filter((item: any) => item.tipo === 'RECEITA');
+        const despesas = this.movimentacoes.filter((item: any) => item.tipo === 'DESPESA')
+        const receitas = this.movimentacoes.filter((item: any) => item.tipo === 'RECEITA')
 
         // aqui vai adicionar  as despesas no pdf
         doc.setFontSize(16);
-        doc.text('Despesas:', 10, 80);
+        doc.text('Despesas:', 10, 80)
         let posY = 90;
         despesas.forEach((despesa: any) => {
-          doc.text(`${despesa.descricao}: ${despesa.valor}`, 10, posY);
+          doc.text(`${despesa.descricao}: ${despesa.valor}`, 10, posY)
           posY += 10;
 
         });
 
         // aqui vai adicionar  as receitas no pdf
         doc.setFontSize(16);
-        doc.text('Receitas:', 10, posY);
+        doc.text('Receitas:', 10, posY)
         posY += 10;
         receitas.forEach((receita: any) => {
-          doc.text(`${receita.descricao}: ${receita.valor}`, 10, posY);
+          doc.text(`${receita.descricao}: ${receita.valor}`, 10, posY)
           posY += 10;
         });
 
@@ -108,7 +108,7 @@ export class CorrentistaComponent {
 
       },
 
-    );
+    )
   }
 
 }
