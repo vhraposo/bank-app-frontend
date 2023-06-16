@@ -5,6 +5,7 @@ import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable'
 
 import { MovimentacaoService } from 'src/app/services/movimentacao.service'; // Importe o serviço MovimentacaoService aqui
+import { Router } from '@angular/router';
 
 
 
@@ -19,10 +20,16 @@ export class CorrentistaComponent {
   correntistas: any;
   movimentacoes: any;
 
+  route: any
+  correntistaSelecionado: any = null;
+
+
   constructor(
     private correntistaService: CorrentistaService,
     private movimentacaoService: MovimentacaoService,
-    private toastr: ToastrService) {}
+    private toastr: ToastrService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void{
     this.exibirCorrentistas();
@@ -61,6 +68,18 @@ export class CorrentistaComponent {
     )
   }
 
+  editarCorrentista(correntista: any) {
+    const queryParams = {
+      nome: correntista.nome,
+      cpf: correntista.cpf,
+      id: correntista.id
+    };
+
+    this.router.navigate(['cadastro'], { queryParams });
+  }
+
+
+
   gerarRelatorio(item: any): void {
     const doc = new jsPDF()
 
@@ -84,7 +103,7 @@ export class CorrentistaComponent {
     ];
     const startY = 30;
     autoTable(doc, {
-      head: [["Informações Pessoais", '']  ],
+      // head: [["Informações Pessoais"] ],
       body: tableData,
       startY: startY
     })
