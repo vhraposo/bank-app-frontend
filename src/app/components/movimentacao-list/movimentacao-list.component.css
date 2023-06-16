@@ -1,0 +1,27 @@
+.tabelamov{
+ max-height: 550px;
+  overflow-y: scroll;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #ff8551 transparent;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .tabelamov::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .tabelamov::-webkit-scrollbar-track {
+    margin-block-start: 50px;
+    margin-block-end: 17px;
+  }
+
+  .tabelamov::-webkit-scrollbar-thumb {
+    background-color: #ff8551;
+    border-radius: 20px;
+    border: 3px solid #fcfcfc;
+  }
