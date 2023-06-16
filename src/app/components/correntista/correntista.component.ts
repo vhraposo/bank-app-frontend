@@ -84,7 +84,7 @@ export class CorrentistaComponent {
     ];
     const startY = 30;
     autoTable(doc, {
-      // head: [["Informações Pessoais"] ],
+      head: [["Informações Pessoais", '']  ],
       body: tableData,
       startY: startY
     })
