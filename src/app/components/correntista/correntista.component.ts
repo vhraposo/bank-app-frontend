@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { CorrentistaService } from 'src/app/services/correntista.service';
-import { jsPDF } from 'jspdf';
+import { Component } from '@angular/core'
+import { ToastrService } from 'ngx-toastr'
+import { CorrentistaService } from 'src/app/services/correntista.service'
+import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
-import { MovimentacaoService } from 'src/app/services/movimentacao.service'; // Importe o serviço MovimentacaoService aqui
-import { Router } from '@angular/router';
+import { MovimentacaoService } from 'src/app/services/movimentacao.service'
+import { Router } from '@angular/router'
 
 
 
@@ -15,13 +15,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./correntista.component.css']
 })
 export class CorrentistaComponent {
-  cpf:any;
-  nome:any;
-  correntistas: any;
-  movimentacoes: any;
+  cpf:any
+  nome:any
+  correntistas: any
+  movimentacoes: any
 
   route: any
-  correntistaSelecionado: any = null;
+  correntistaSelecionado: any = null
 
 
   constructor(
@@ -38,11 +38,11 @@ export class CorrentistaComponent {
     this.correntistaService.list()
     .subscribe(
       data => {
-        this.correntistas = data;
-        console.log(data);
+        this.correntistas = data
+        console.log(data)
       },
       error => {
-        console.log(error);
+        console.log(error)
       }
     )
   }
@@ -75,25 +75,20 @@ export class CorrentistaComponent {
       id: correntista.id
     };
 
-    this.router.navigate(['cadastro'], { queryParams });
+    this.router.navigate(['cadastro'], { queryParams })
   }
-
-
 
   gerarRelatorio(item: any): void {
     const doc = new jsPDF()
 
     // corpo do pdf
-    doc.setFontSize(20);
-
-
-
+    doc.setFontSize(20)
     doc.text('Movimentações do Usuário', 10, 20)
 
     const nome = item.nome;
     const cpf = item.cpf;
-    const numeroConta = item.conta.numero;
-    const saldoAtual = item.conta.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const numeroConta = item.conta.numero
+    const saldoAtual = item.conta.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
     const tableData = [
       ['Nome', nome],
@@ -101,7 +96,7 @@ export class CorrentistaComponent {
       ['Conta N°', numeroConta],
       ['Saldo Atual', saldoAtual]
     ];
-    const startY = 30;
+    const startY = 30
     autoTable(doc, {
       // head: [["Informações Pessoais"] ],
       body: tableData,
@@ -114,7 +109,6 @@ export class CorrentistaComponent {
 
       data => {
         this.movimentacoes = data;
-        console.log('hello',this.movimentacoes )
 
         // aqui vai adicionar  as receitas e desoesas no pdf
         doc.setFontSize(16)

@@ -9,9 +9,9 @@ import { CorrentistaService } from 'src/app/services/correntista.service';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  cpf: any;
-  nome: any;
-  correntistaId: any; // Adicione uma nova variável para armazenar o ID do correntista
+  cpf: any
+  nome: any
+  correntistaId: any
 
   constructor(
     private correntistaService: CorrentistaService,
@@ -22,9 +22,9 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.nome = params['nome'];
-      this.cpf = params['cpf'];
-      this.correntistaId = params['id']; // Armazene o ID do correntista
+      this.nome = params['nome']
+      this.cpf = params['cpf']
+      this.correntistaId = params['id']
     });
   }
 
@@ -33,15 +33,13 @@ export class CadastroComponent implements OnInit {
 
     if (!this.cpf || !this.nome) {
       this.toastr.error('Por favor, preencha todos os campos!');
-      return;
+      return
     }
 
     const correntista = {
       cpf: this.cpf,
       nome: this.nome
-    };
-
-    console.log(correntista);
+    }
 
     if (this.correntistaId) {
       this.correntistaService.update(this.correntistaId, correntista).subscribe(
@@ -54,7 +52,7 @@ export class CadastroComponent implements OnInit {
           console.log(error);
           this.toastr.error('Não foi possível atualizar o correntista!');
         }
-      );
+      )
     } else {
       // validando se o usuário existe, se não vai ser chamado a criação:
       this.correntistaService.create(correntista).subscribe(
@@ -65,7 +63,7 @@ export class CadastroComponent implements OnInit {
         },
         error => {
           console.log(error);
-          this.toastr.error('Não foi possível cadastrar o correntista!');
+          this.toastr.error('Não foi possível cadastrar o correntista!')
         }
       );
     }
