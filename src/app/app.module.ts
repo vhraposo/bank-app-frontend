@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { MainScreenComponent } from './components/main-screen/main-screen.component';
 
 
 registerLocaleData(localePt);
@@ -28,6 +29,7 @@ registerLocaleData(localePt);
     CorrentistaComponent,
     UserLoginComponent,
     CadastroComponent,
+    MainScreenComponent,
   ],
   imports: [
     BrowserModule,

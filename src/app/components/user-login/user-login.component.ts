@@ -27,7 +27,7 @@ export class UserLoginComponent implements OnInit {
       data => {
         this.toastr.success('Login realizado com sucesso!');
         
-        this.router.navigate(['/movimentacoes']);
+        this.router.navigate(['/mainscreen']);
       },
       error => {
         this.toastr.error('Não foi possível realizar login!');

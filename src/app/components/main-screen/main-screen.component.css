@@ -1,0 +1,26 @@
+
+
+.buttons{
+
+
+  width: 700px;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 20px;
+  margin: 0 auto;
+
+  grid-template-areas:
+    "movimentações nova-movimentação"
+    "correntistas novo-correntista";
+}
+.movimentações { grid-area: movimentações; }
+.nova-movimentação { grid-area: nova-movimentação; }
+.correntistas { grid-area: correntistas; }
+.novo-correntista { grid-area: novo-correntista; }
+
+.header{
+  text-align: center;
+  margin-bottom: 80px;
+}
