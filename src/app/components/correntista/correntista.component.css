@@ -26,3 +26,10 @@
 
 .pen:hover svg path{fill: blue;}
 
+.mtitle{
+  padding-left: 30px;
+}
+
+.botoes{
+  padding-right: 50px;
+}
