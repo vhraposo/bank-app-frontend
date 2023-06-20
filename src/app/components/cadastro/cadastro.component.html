@@ -1,23 +1,48 @@
-
 <div class="container">
-    <div class="jumbotron">
-      <p class="lead-1">Detalhes do correntista</p>
-      <hr class="my-2">
+  <div class="jumbotron">
+    <p class="lead-1">Detalhes do correntista</p>
+    <hr class="my-2">
 
-      <div class="row g-2">
+    <div class="col-5">
+      <input type="text" class="form-control" id="iNome" [(ngModel)]="nome" placeholder="Nome do Correntista" required>
+    </div>
+    <div class="row g-2">
       <div class="col-md-3">
-        <input  class="form-control" id="iCpf" [(ngModel)]="cpf"  placeholder="CPF">
+        <input class="form-control" id="iCpf" [(ngModel)]="cpf" placeholder="CPF">
       </div>
-      <div class="col-5">
-        <input type="text"  class="form-control" id="iNome" [(ngModel)]="nome" placeholder="Nome do Correntista" required>
+
+      <div class="col-md-3">
+        <input class="form-control" id="iCep" [(ngModel)]="cep" placeholder="CEP" (blur)="fetchAddress()">
       </div>
+
+
+      <div class="col-md-3">
+        <input class="form-control" id="iLogradouro" [(ngModel)]="logradouro" placeholder="Rua">
+      </div>
+
+      <div class="col-md-3">
+        <input class="form-control" id="iComplemento" [(ngModel)]="complemento" placeholder="Complemento">
+      </div>
+
+      <div class="col-md-3">
+        <input class="form-control" id="iBairro" [(ngModel)]="bairro" placeholder="Bairro">
+      </div>
+
+      <div class="col-md-3">
+        <input class="form-control" id="iCidade" [(ngModel)]="cidade" placeholder="Cidade">
+      </div>
+
+      <div class="col-md-3">
+        <input class="form-control" id="iCidade" [(ngModel)]="estado" placeholder="Estado">
+      </div>
+
       <div class="col-3">
-      <div class="d-grid gap-2 d-md-flex ">
-          <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()" >Gravar</button>
+        <div class="d-grid gap-2 d-md-flex ">
+          <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">Gravar</button>
           <a routerLink="/movimentacoes" class="btn btn-outline-danger">Voltar</a>
         </div>
       </div>
-      </div>
-      <p></p>
+    </div>
+    <p></p>
   </div>
 </div>

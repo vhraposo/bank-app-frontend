@@ -15,8 +15,14 @@ import { Router } from '@angular/router'
   styleUrls: ['./correntista.component.css']
 })
 export class CorrentistaComponent {
-  cpf:any
   nome:any
+  cpf:any
+  endereco: any
+  complemento: any
+  bairro: any
+  cidade: any
+  estado: any
+
   correntistas: any
   movimentacoes: any
 
@@ -50,8 +56,14 @@ export class CorrentistaComponent {
   save(): void{
     const correntista = {
       id: null,
+      nome:this.nome,
       cpf:this.cpf,
-      nome:this.nome
+      endereco: this.endereco,
+      complemento: this.complemento,
+      bairro: this.bairro,
+      cidade: this.cidade,
+      estado: this.estado
+
     }
     console.log(correntista);
     this.correntistaService.create(correntista)
@@ -72,6 +84,15 @@ export class CorrentistaComponent {
     const queryParams = {
       nome: correntista.nome,
       cpf: correntista.cpf,
+      cep: correntista.cep,
+      logradouro: correntista.logradouro,
+      complemento: correntista.complemento,
+      bairro: correntista.bairro,
+      cidade: correntista.cidade,
+      estado: correntista.estado,
+
+
+
       id: correntista.id
     };
 
