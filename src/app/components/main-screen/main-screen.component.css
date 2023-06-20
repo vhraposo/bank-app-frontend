@@ -3,12 +3,14 @@
 .buttons{
 
 
-  width: 700px;
+  width: 900px;
+
+
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px 20px;
+  gap: 15px;
   margin: 0 auto;
 
   grid-template-areas:
@@ -23,4 +25,9 @@
 .header{
   text-align: center;
   margin-bottom: 80px;
+}
+
+
+.buttons a{
+  padding-block: 20px;
 }
