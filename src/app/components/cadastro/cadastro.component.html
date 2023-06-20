@@ -3,41 +3,44 @@
     <p class="lead-1">Detalhes do correntista</p>
     <hr class="my-2">
 
-    <div class="col-5">
-      <input type="text" class="form-control" id="iNome" [(ngModel)]="nome" placeholder="Nome do Correntista" required>
-    </div>
-    <div class="row g-2">
-      <div class="col-md-3">
-        <input class="form-control" id="iCpf" [(ngModel)]="cpf" placeholder="CPF">
+    <div class="container fieldregister">
+      <div class="row g-1">
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="iNome" [(ngModel)]="nome" placeholder="Nome do Correntista" required>
+        </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iCpf" [(ngModel)]="cpf" placeholder="CPF">
+          </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iCep" [(ngModel)]="cep" placeholder="CEP" (blur)="fetchAddress()">
+          </div>
+
+
+          <div class="col-md-4">
+            <input class="form-control" id="iLogradouro" [(ngModel)]="logradouro" placeholder="Logradouro">
+          </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iComplemento" [(ngModel)]="complemento" placeholder="Complemento">
+          </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iBairro" [(ngModel)]="bairro" placeholder="Bairro">
+          </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iCidade" [(ngModel)]="cidade" placeholder="Cidade">
+          </div>
+
+          <div class="col-md-4">
+            <input class="form-control" id="iEstado" [(ngModel)]="estado" placeholder="Estado">
+          </div>
       </div>
 
-      <div class="col-md-3">
-        <input class="form-control" id="iCep" [(ngModel)]="cep" placeholder="CEP" (blur)="fetchAddress()">
-      </div>
-
-
-      <div class="col-md-3">
-        <input class="form-control" id="iLogradouro" [(ngModel)]="logradouro" placeholder="Rua">
-      </div>
-
-      <div class="col-md-3">
-        <input class="form-control" id="iComplemento" [(ngModel)]="complemento" placeholder="Complemento">
-      </div>
-
-      <div class="col-md-3">
-        <input class="form-control" id="iBairro" [(ngModel)]="bairro" placeholder="Bairro">
-      </div>
-
-      <div class="col-md-3">
-        <input class="form-control" id="iCidade" [(ngModel)]="cidade" placeholder="Cidade">
-      </div>
-
-      <div class="col-md-3">
-        <input class="form-control" id="iCidade" [(ngModel)]="estado" placeholder="Estado">
-      </div>
-
-      <div class="col-3">
-        <div class="d-grid gap-2 d-md-flex ">
+      <div class="col-3 buttonsdiv">
+        <div class="d-grid gap-2 d-md-flex">
           <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">Gravar</button>
           <a routerLink="/movimentacoes" class="btn btn-outline-danger">Voltar</a>
         </div>
