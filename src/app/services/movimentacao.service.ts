@@ -22,4 +22,10 @@ export class MovimentacaoService {
   create(movimentacao:any): Observable<any>{
     return this.http.post(`${baseUrl}/movimentacoes`, movimentacao)
   }
+
+  update(idMovimentacao: any, movimentacao: any): Observable<any> {
+    return this.http.put(`${baseUrl}/movimentacoes/${idMovimentacao}`, movimentacao);
+  }
+
+
 }
