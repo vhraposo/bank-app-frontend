@@ -26,7 +26,6 @@ export class UserLoginComponent implements OnInit {
     this.loginuserService.loginUser(this.user).subscribe(
       data => {
         this.toastr.success('Login realizado com sucesso!');
-        
         this.router.navigate(['/mainscreen']);
       },
       error => {

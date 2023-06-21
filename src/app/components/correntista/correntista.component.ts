@@ -17,11 +17,11 @@ import { Router } from '@angular/router'
 export class CorrentistaComponent {
   nome:any
   cpf:any
-  endereco: any
+  endereco?: string
   complemento: any
-  bairro: any
-  cidade: any
-  estado: any
+  bairro?: string
+  cidade?: string
+  estado?: string
 
   correntistas: any
   movimentacoes: any
@@ -104,26 +104,37 @@ export class CorrentistaComponent {
 
     // corpo do pdf
     doc.setFontSize(20)
-    doc.text('Movimentações do Usuário', 10, 20)
+    const title = 'Movimentações do Usuário';
+    const titleFontSize = 20;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const titleWidth = doc.getStringUnitWidth(title) * titleFontSize / doc.internal.scaleFactor;
+
 
     const nome = item.nome;
     const cpf = item.cpf;
+    const logradouro = item.logradouro
+    const complemento = item.complemento
     const numeroConta = item.conta.numero
     const saldoAtual = item.conta.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
     const tableData = [
       ['Nome', nome],
       ['CPF', cpf],
+      ['Endereço', logradouro + (complemento ? ', ' + complemento : '')],
       ['Conta N°', numeroConta],
       ['Saldo Atual', saldoAtual]
     ];
     const startY = 30
-    autoTable(doc, {
-      // head: [["Informações Pessoais"] ],
-      body: tableData,
-      startY: startY
-    })
 
+    const titleX = (pageWidth - titleWidth) / 2; // posição horizontal no centro
+    doc.setFontSize(titleFontSize);
+    doc.text(title, titleX, 20);
+
+    autoTable(doc, {
+      body: tableData,
+      startY: startY,
+
+    })
 
     //buscando as movimentações no bd por id da conta
     this.movimentacaoService.findByIdConta(item.id).subscribe(
@@ -156,7 +167,7 @@ export class CorrentistaComponent {
           }
         const pageSize = doc.internal.pageSize;
         const pageHeight = pageSize.height;
-        const tableHeight = 150
+        const tableHeight = 100
         const startY = (pageHeight - tableHeight) / 2;
 
         autoTable(doc, {
