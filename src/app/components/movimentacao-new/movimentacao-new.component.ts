@@ -20,6 +20,7 @@ export class MovimentacaoNewComponent implements OnInit {
   valor: any;
   tipo: any;
 
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   editMode: boolean = false
   id: any
 
