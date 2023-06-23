@@ -65,16 +65,13 @@ export class CorrentistaComponent {
       estado: this.estado
 
     }
-    console.log(correntista);
     this.correntistaService.create(correntista)
     .subscribe(
       response => {
-        console.log(response)
         this.exibirCorrentistas()
         this.toastr.success("Correntista cadastrado com sucesso!")
       },
       error => {
-        console.log(error)
         this.toastr.error("Não foi possível cadastrar o correntista!")
       }
     )

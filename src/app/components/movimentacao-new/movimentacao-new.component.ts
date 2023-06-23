@@ -41,26 +41,18 @@ export class MovimentacaoNewComponent implements OnInit {
     this.exibirCorrentistas()
     this.checkEditMode()
     this.createMovimentacaoForm()
-    this.movimentacaoForm.get("descricao")?.valueChanges.subscribe( value => {
-      
-        console.log("ALOOOO")
-
-    })
 
     this.route.queryParams.subscribe(params => {
       this.editMode = params['edit'] === 'true'
-      console.log(this.id)
       if (params['id']) {
          this.getMovimentacaoById(params['id'])
-         console.log(this.getMovimentacaoById(params['id']))
-
       }
     })
   }
 
   createMovimentacaoForm(): void {
     this.movimentacaoForm = this.formBuilder.group({
-      data: [moment().format('YYYY-MM-DDTHH:mm:ss')],
+      dataHora: [moment().format('YYYY-MM-DDTHH:mm:ss')],
       correntista: [''],
       descricao: [''],
       tipo: [''],
@@ -73,15 +65,15 @@ export class MovimentacaoNewComponent implements OnInit {
 
     this.movimentacaoService.findById(id).subscribe(
       data => {
-        console.log(data)
+        console.log(moment(data.dataHora).format("DD/MM/YYYY"))
         this.movimentacaoForm.patchValue({
-          data: data.data,
-          correntista: data.correntista,
+          dataHora: moment(data.dataHora).format("YYYY-MM-DD"),
+          correntista: this.correntistas.find((correntista:any) => correntista.id === data.idConta),
           descricao: data.descricao,
           tipo: data.tipo,
-          valor: data.valor
+          valor: data.valor,
+
         })
-        console.log(this.movimentacaoForm)
         this.changeDetector.detectChanges()
       },
       error => {
@@ -93,6 +85,7 @@ export class MovimentacaoNewComponent implements OnInit {
   exibirCorrentistas(): void {
     this.correntistaService.list().subscribe(
       (data) => {
+        console.log(data)
         this.correntistas = data
         console.log(data);
       },
@@ -110,7 +103,7 @@ export class MovimentacaoNewComponent implements OnInit {
       this.movimentacaoService.findByIdConta(this.id).subscribe(
         (response) => {
           const movimentacao = response
-          this.dataHora = movimentacao.dataHora
+          this.dataHora = moment(movimentacao.dataHora).format("DD/MM/YYYY")
           this.descricao = movimentacao.descricao
           this.valor = movimentacao.valor
           this.tipo = movimentacao.tipo
@@ -125,24 +118,24 @@ export class MovimentacaoNewComponent implements OnInit {
 
 
   save(): void {
+    console.log(this.movimentacaoForm.get("tipo")?.value)
     const movimentacao = {
-      valor: this.valor,
-      descricao: this.descricao,
-      tipo: this.tipo,
-      idConta: this.correntista.id,
-      dataHora: moment(this.dataHora).format('YYYY-MM-DDTHH:mm:ss')
-    };
-    console.log(movimentacao)
+      valor: this.movimentacaoForm.get("valor")?.value,
+      descricao: this.movimentacaoForm.get("descricao")?.value,
+      tipo: this.movimentacaoForm.get("tipo")!.value,
+
+      idConta: this.movimentacaoForm.get("correntista")?.value.id,
+      dataHora: moment(this.movimentacaoForm.get("dataHora")?.value).format('YYYY-MM-DDTHH:mm:ss')
+
+    }
 
     if (this.editMode) {
       this.movimentacaoService.update(this.id, movimentacao).subscribe(
         (response) => {
-          console.log(response)
           this.toastr.success('Movimentação atualizada com sucesso!')
           this.router.navigate(['/movimentacoes'])
         },
         (error) => {
-          console.log(error);
           this.toastr.error('Não foi possível atualizar a movimentação')
         }
       )
@@ -153,7 +146,6 @@ export class MovimentacaoNewComponent implements OnInit {
           this.router.navigate(['/movimentacoes'])
         },
         (error) => {
-          console.log(error)
           this.toastr.error('Não foi possível realizar a movimentação')
         }
       );

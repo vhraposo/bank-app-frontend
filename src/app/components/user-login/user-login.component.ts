@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginuserService } from 'src/app/services/loginuser.service';
-import { User } from 'src/app/user';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { LoginuserService } from 'src/app/services/loginuser.service'
+import { User } from 'src/app/user'
+import { ToastrService } from 'ngx-toastr'
+import { FormBuilder, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-user-login',
@@ -11,26 +12,38 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserLoginComponent implements OnInit {
 
-  user: User = new User();
+  loginForm: FormGroup
 
   constructor(
     private loginuserService: LoginuserService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private FormBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createloginForm()
+  }
 
   userLogin() {
-    console.log(this.user);
-    this.loginuserService.loginUser(this.user).subscribe(
+    const user = new User()
+    user.userId = this.loginForm.get("userId")?.value
+    user.password = this.loginForm.get("password")?.value
+    this.loginuserService.loginUser(user).subscribe(
       data => {
-        this.toastr.success('Login realizado com sucesso!');
-        this.router.navigate(['/mainscreen']);
+        this.toastr.success('Login realizado com sucesso!')
+        this.router.navigate(['/mainscreen'])
       },
       error => {
-        this.toastr.error('Não foi possível realizar login!');
+        this.toastr.error('Não foi possível realizar login!')
       }
-    );
+    )
+  }
+
+  createloginForm(): void{
+    this.loginForm = this.FormBuilder.group({
+      userId: [''],
+      password: ['']
+    })
   }
 }
