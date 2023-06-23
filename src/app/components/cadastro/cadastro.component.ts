@@ -119,7 +119,7 @@ export class CadastroComponent implements OnInit {
         }
       },
       error => {
-        this.toastr.error('Erro de requição!')
+        this.toastr.error('Preencha o campo Cep!')
       }
     )
   }
