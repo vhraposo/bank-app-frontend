@@ -11,11 +11,11 @@
           </div>
 
             <div class="col-md-4">
-              <input class="form-control" id="iCpf" formControlName="cpf" placeholder="CPF">
+              <input class="form-control" id="iCpf" formControlName="cpf" placeholder="CPF" mask="000.000.000-00">
             </div>
 
             <div class="col-md-4">
-              <input  class="form-control" id="iCep" formControlName="cep" placeholder="CEP" (blur)="fetchAddress()">
+              <input  class="form-control" id="iCep" formControlName="cep" placeholder="CEP" (blur)="fetchAddress()" mask="00000-000">
             </div>
 
 
