@@ -1,4 +1,4 @@
-import { User } from './user';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovimentacaoNewComponent } from './components/movimentacao-new/movimentacao-new.component';

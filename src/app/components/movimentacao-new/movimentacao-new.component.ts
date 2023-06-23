@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CorrentistaService } from 'src/app/services/correntista.service';
 import { MovimentacaoService } from 'src/app/services/movimentacao.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import { FormBuilder, FormGroup } from '@angular/forms'
 
 
 @Component({
@@ -20,6 +21,8 @@ export class MovimentacaoNewComponent implements OnInit {
   valor: any;
   tipo: any;
 
+  movimentacaoForm!: FormGroup;
+
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   editMode: boolean = false
   id: any
@@ -29,12 +32,62 @@ export class MovimentacaoNewComponent implements OnInit {
     private route: ActivatedRoute,
     private movimentacaoService: MovimentacaoService,
     private correntistaService: CorrentistaService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.exibirCorrentistas()
     this.checkEditMode()
+    this.createMovimentacaoForm()
+    this.movimentacaoForm.get("descricao")?.valueChanges.subscribe( value => {
+      
+        console.log("ALOOOO")
+
+    })
+
+    this.route.queryParams.subscribe(params => {
+      this.editMode = params['edit'] === 'true'
+      console.log(this.id)
+      if (params['id']) {
+         this.getMovimentacaoById(params['id'])
+         console.log(this.getMovimentacaoById(params['id']))
+
+      }
+    })
+  }
+
+  createMovimentacaoForm(): void {
+    this.movimentacaoForm = this.formBuilder.group({
+      data: [moment().format('YYYY-MM-DDTHH:mm:ss')],
+      correntista: [''],
+      descricao: [''],
+      tipo: [''],
+      valor: ['']
+    });
+  }
+
+
+  getMovimentacaoById(id: string): void {
+
+    this.movimentacaoService.findById(id).subscribe(
+      data => {
+        console.log(data)
+        this.movimentacaoForm.patchValue({
+          data: data.data,
+          correntista: data.correntista,
+          descricao: data.descricao,
+          tipo: data.tipo,
+          valor: data.valor
+        })
+        console.log(this.movimentacaoForm)
+        this.changeDetector.detectChanges()
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   exibirCorrentistas(): void {
@@ -96,7 +149,6 @@ export class MovimentacaoNewComponent implements OnInit {
     } else {
       this.movimentacaoService.create(movimentacao).subscribe(
         (response) => {
-          console.log(response);
           this.toastr.success('Movimentação realizada com sucesso!')
           this.router.navigate(['/movimentacoes'])
         },

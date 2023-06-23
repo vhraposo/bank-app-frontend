@@ -39,7 +39,7 @@
             <td [ngStyle]="{'color':item.tipo === 'RECEITA' ? 'green' : 'red'}">{{ item.valor | currency: 'BRL' }}</td>
             <td>{{ item.tipo }}</td>
             <td>
-              <a routerLink="/movimentacoes-new" [queryParams]="{ edit: true, id: item.id }">
+              <a routerLink="/movimentacoes-new" [queryParams]="{ edit: true, id: item.id }" routerLinkActive="active">
                 <i class="fas fa-edit"></i>
               </a>
             </td>
