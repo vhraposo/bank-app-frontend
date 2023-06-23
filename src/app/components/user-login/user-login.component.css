@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  background-color: #7e837e;
+  background-color: #7e837e92;
   padding: 20px;
   border-radius: 10px;
   margin: 50px auto;
@@ -38,7 +38,7 @@ h1 {
 }
 
 .btn-primary {
-  background-color: #f25042;
+  background-color: #FF8551;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -50,7 +50,7 @@ h1 {
 }
 
 .btn-primary:hover {
-  background-color: #df3223;
+  background-color: #d6774e;
 }
 
 .logos{
