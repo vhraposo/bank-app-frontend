@@ -65,7 +65,6 @@ export class MovimentacaoNewComponent implements OnInit {
 
     this.movimentacaoService.findById(id).subscribe(
       data => {
-        console.log(moment(data.dataHora).format("DD/MM/YYYY"))
         this.movimentacaoForm.patchValue({
           dataHora: moment(data.dataHora).format("YYYY-MM-DD"),
           correntista: this.correntistas.find((correntista:any) => correntista.id === data.idConta),
@@ -77,7 +76,7 @@ export class MovimentacaoNewComponent implements OnInit {
         this.changeDetector.detectChanges()
       },
       error => {
-        console.log(error);
+        this.toastr.error("Erro ao obter ao obter a movimentação!")
       }
     )
   }
@@ -85,12 +84,10 @@ export class MovimentacaoNewComponent implements OnInit {
   exibirCorrentistas(): void {
     this.correntistaService.list().subscribe(
       (data) => {
-        console.log(data)
         this.correntistas = data
-        console.log(data);
       },
       (error) => {
-        console.log(error);
+        this.toastr.error("Erro ao exibir os correntistas!")
       }
     );
   }
@@ -110,7 +107,7 @@ export class MovimentacaoNewComponent implements OnInit {
           this.correntista = movimentacao.idConta
         },
         (error) => {
-          console.log(error)
+          this.toastr.error("Não foi possível recuperar os dados para edição!")
         }
       );
     }
@@ -118,7 +115,6 @@ export class MovimentacaoNewComponent implements OnInit {
 
 
   save(): void {
-    console.log(this.movimentacaoForm.get("tipo")?.value)
     const movimentacao = {
       valor: this.movimentacaoForm.get("valor")?.value,
       descricao: this.movimentacaoForm.get("descricao")?.value,

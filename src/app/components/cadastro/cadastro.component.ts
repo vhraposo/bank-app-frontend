@@ -8,7 +8,6 @@ import { FormBuilder, FormGroup } from '@angular/forms'
 const URL_PREFIX = `https://viacep.com.br/ws/`
 const URL_SUFFIX = `/json/`
 
-
 @Component({
   selector: 'app-cadastro-correntista',
   templateUrl: './cadastro.component.html',
@@ -41,7 +40,7 @@ export class CadastroComponent implements OnInit {
         estado: params['estado']
       })
 
-      this.correntistaId = params['id'];
+      this.correntistaId = params['id']
     })
 
   }
@@ -56,13 +55,13 @@ export class CadastroComponent implements OnInit {
       bairro: [''],
       cidade: [''],
       estado: ['']
-    });
+    })
   }
 
   save(): void {
     if (!this.cadastroForm.get("cpf")?.value || !this.cadastroForm.get("nome")?.value) {
-      this.toastr.error('Por favor, preencha todos os campos!');
-      return;
+      this.toastr.error('Por favor, preencha todos os campos!')
+      return
     }
 
     const correntista = {
@@ -74,28 +73,28 @@ export class CadastroComponent implements OnInit {
       bairro: this.cadastroForm.get("bairro")?.value,
       cidade: this.cadastroForm.get("cidade")?.value,
       estado: this.cadastroForm.get("estado")?.value,
-    };
+    }
 
     if (this.correntistaId) {
       this.correntistaService.update(this.correntistaId, correntista).subscribe(
         response => {
-          this.toastr.success('Correntista atualizado com sucesso!');
-          this.router.navigate(['/correntistas']);
+          this.toastr.success('Correntista atualizado com sucesso!')
+          this.router.navigate(['/correntistas'])
         },
         error => {
-          this.toastr.error('Não foi possível atualizar o correntista!');
+          this.toastr.error('Não foi possível atualizar o correntista!')
         }
-      );
+      )
     } else {
       this.correntistaService.create(correntista).subscribe(
         response => {
-          this.toastr.success('Correntista cadastrado com sucesso!');
-          this.router.navigate(['/correntistas']);
+          this.toastr.success('Correntista cadastrado com sucesso!')
+          this.router.navigate(['/correntistas'])
         },
         error => {
-          this.toastr.error('Não foi possível cadastrar o correntista!');
+          this.toastr.error('Não foi possível cadastrar o correntista!')
         }
-      );
+      )
     }
   }
 
@@ -120,9 +119,9 @@ export class CadastroComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+        this.toastr.error('Erro de requição!')
       }
-    );
+    )
   }
 
 }

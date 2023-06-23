@@ -1,8 +1,10 @@
-import { CorrentistaService } from './../../services/correntista.service'
 import { Component, OnInit } from '@angular/core'
-import { MovimentacaoService } from 'src/app/services/movimentacao.service'
+import { FormGroup } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { ToastrService } from 'ngx-toastr'
+import { MovimentacaoService } from 'src/app/services/movimentacao.service'
+
+import { CorrentistaService } from './../../services/correntista.service'
 
 
 @Component({
@@ -17,14 +19,15 @@ export class MovimentacaoListComponent implements OnInit {
   listagemTitle?: string
   totalReceitas = 0
   totalDespesas = 0
-  editMode = false;
+  editMode = false
 
-  movimentacaoForm!: FormGroup;
+  movimentacaoForm!: FormGroup
 
   constructor(
     private movimentacaoService: MovimentacaoService,
     private correntistaService: CorrentistaService,
     private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -40,9 +43,9 @@ export class MovimentacaoListComponent implements OnInit {
         this.correntistas = data
       },
       error => {
-        console.log(error)
+        this.toastr.error("Não foi possível exibir os correntistas")
       }
-    );
+    )
   }
 
   listMovimentacoes(): void {
@@ -54,9 +57,9 @@ export class MovimentacaoListComponent implements OnInit {
           this.listagemTitle = 'Listagem das movimentações por correntista'
         },
         error => {
-          console.log(error)
+          this.toastr.error("Erro ao listar as movimentações por correntista!")
         }
-      );
+      )
     } else {
       this.movimentacaoService.list().subscribe(
         data => {
@@ -65,9 +68,9 @@ export class MovimentacaoListComponent implements OnInit {
           this.listagemTitle = 'Listagem de todas as movimentações'
         },
         error => {
-          console.log(error)
+          this.toastr.error("Erro ao listar as movimentações!")
         }
-      );
+      )
     }
   }
 
@@ -82,13 +85,13 @@ export class MovimentacaoListComponent implements OnInit {
   }
 
   formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = this.padNumber(date.getMonth() + 1);
-    const day = this.padNumber(date.getDate());
-    return `${year}-${month}-${day}`;
+    const year = date.getFullYear()
+    const month = this.padNumber(date.getMonth() + 1)
+    const day = this.padNumber(date.getDate())
+    return `${year}-${month}-${day}`
   }
 
   padNumber(number: number): string {
-    return number < 10 ? '0' + number : number.toString();
+    return number < 10 ? '0' + number : number.toString()
   }
 }

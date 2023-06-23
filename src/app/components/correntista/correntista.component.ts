@@ -45,10 +45,9 @@ export class CorrentistaComponent {
     .subscribe(
       data => {
         this.correntistas = data
-        console.log(data)
       },
       error => {
-        console.log(error)
+        this.toastr.error("Não foi possível exibir os correntistas!")
       }
     )
   }
@@ -123,8 +122,8 @@ export class CorrentistaComponent {
     ];
     const startY = 30
 
-    const titleX = (pageWidth - titleWidth) / 2; // posição horizontal no centro
-    doc.setFontSize(titleFontSize);
+    const titleX = (pageWidth - titleWidth) / 2
+    doc.setFontSize(titleFontSize)
     doc.text(title, titleX, 20);
 
     autoTable(doc, {
@@ -135,18 +134,12 @@ export class CorrentistaComponent {
 
     //buscando as movimentações no bd por id da conta
     this.movimentacaoService.findByIdConta(item.id).subscribe(
-
       data => {
         this.movimentacoes = data;
 
         // aqui vai adicionar  as receitas e desoesas no pdf
         doc.setFontSize(16)
-        // autoTable(doc, {
-          //   head: [['Despesas', 'R$', 'Receitas', 'R$']],
-          //   body: [['Pizza', '-35', 'Salario', '2000']]
-          //   })
-
-          //  pegando as receitas e despesas
+        //  pegando as receitas e despesas
           const despesas = this.movimentacoes.filter((item: any) => item.tipo === 'DESPESA')
           const receitas = this.movimentacoes.filter((item: any) => item.tipo === 'RECEITA')
           const tableData = [['Despesas', 'R$', 'Receitas', 'R$']];
@@ -158,27 +151,23 @@ export class CorrentistaComponent {
               i < despesas.length ? `R$ ${despesas[i].valor}` : '',
               i < receitas.length ? receitas[i].descricao : '',
               i < receitas.length ? `R$ ${receitas[i].valor}` : ''
-            ];
+            ]
 
             tableData.push(rowData);
           }
-        const pageSize = doc.internal.pageSize;
-        const pageHeight = pageSize.height;
+        const pageSize = doc.internal.pageSize
+        const pageHeight = pageSize.height
         const tableHeight = 100
         const startY = (pageHeight - tableHeight) / 2;
 
         autoTable(doc, {
           head: [tableData[0]],
           body: tableData.slice(1),
-          startY: startY // aqui vai ser a posição inicial da tabela como Y
-        });
-
-        // aqui vai salvar os arquivos para download
+          startY: startY
+        })
           doc.save(`Relatorio ${item.nome}-Fx Bank.pdf`)
 
-      },
-
-    )
+      })
   }
 
 }
