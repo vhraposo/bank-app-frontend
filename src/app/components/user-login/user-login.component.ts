@@ -1,3 +1,4 @@
+import { MovimentacaoService } from './../../services/movimentacao.service';
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { LoginuserService } from 'src/app/services/loginuser.service'
@@ -11,11 +12,14 @@ import { FormBuilder, FormGroup } from '@angular/forms'
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-
+  movimentacoes: any
+  totalReceitas = 0
+  totalDespesas = 0
   loginForm: FormGroup
 
   constructor(
     private loginuserService: LoginuserService,
+    private movimentacaoService: MovimentacaoService,
     private toastr: ToastrService,
     private router: Router,
     private FormBuilder: FormBuilder
@@ -23,6 +27,7 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createloginForm()
+    this.listMov()
   }
 
   userLogin() {
@@ -45,5 +50,24 @@ export class UserLoginComponent implements OnInit {
       userId: [''],
       password: ['']
     })
+  }
+
+  listMov():void{
+    this.movimentacaoService.list().subscribe(
+      data => {
+        this.movimentacoes = data
+        console.log(data)
+        this.calcularmovimentacoes()
+      }  )
+  }
+
+  calcularmovimentacoes(): void {
+    this.totalReceitas = this.movimentacoes
+      .filter((item: any) => item.tipo === 'RECEITA')
+      .reduce((acc: number, item: any) => acc + item.valor, 0)
+
+    this.totalDespesas = this.movimentacoes
+      .filter((item: any) => item.tipo === 'DESPESA')
+      .reduce((acc: number, item: any) => acc + item.valor, 0)
   }
 }
