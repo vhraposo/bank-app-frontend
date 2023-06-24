@@ -69,5 +69,8 @@ export class UserLoginComponent implements OnInit {
     this.totalDespesas = this.movimentacoes
       .filter((item: any) => item.tipo === 'DESPESA')
       .reduce((acc: number, item: any) => acc + item.valor, 0)
+
+      this.movimentacoes = this.totalReceitas + Math.abs(this.totalDespesas)
+
   }
 }

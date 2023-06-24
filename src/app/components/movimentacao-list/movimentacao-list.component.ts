@@ -14,6 +14,7 @@ import { CorrentistaService } from './../../services/correntista.service'
 })
 export class MovimentacaoListComponent implements OnInit {
   movimentacoes: any
+  totalMovimentacoes: any
   correntistas: any
   correntista: any
   listagemTitle?: string
@@ -82,6 +83,9 @@ export class MovimentacaoListComponent implements OnInit {
     this.totalDespesas = this.movimentacoes
       .filter((item: any) => item.tipo === 'DESPESA')
       .reduce((acc: number, item: any) => acc + item.valor, 0)
+
+      this.totalMovimentacoes = this.totalReceitas + Math.abs(this.totalDespesas);
+
   }
 
   formatDate(date: Date): string {

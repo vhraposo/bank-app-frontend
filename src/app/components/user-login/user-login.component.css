@@ -76,7 +76,7 @@ h1 {
 
 .card {
   flex: 1;
-  background-color: #323238;
+  background-color: #ff8551e4;;
 }
 
 .card-title{
@@ -92,12 +92,3 @@ h1 {
   color: #E1E1E6;
 }
 
-.entry, .exit {
-  display: flex;
-  align-items: flex-end;
-}
-
-.inicon, .outicon{
-  flex: 1;
-
-}

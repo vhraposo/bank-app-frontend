@@ -13,9 +13,37 @@
 
     </div>
 
-    <div class="container border mt-1">
-      <p>Valor total de receitas: {{ totalReceitas | currency: 'BRL' }}</p>
-      <p>Valor total de despesas: {{ totalDespesas | currency: 'BRL' }}</p>
+    <div class="container cardsmain">
+
+      <div class="card receitas">
+        <div class="card-body">
+          <div class="entry">
+              <h5 class="card-title inicon">Entradas</h5>
+              <img src="../../../assets/in.svg"  alt="seta verde apontada para cima">
+          </div>
+          <p class="card-text">{{totalReceitas | currency: 'BRL'}}</p>
+        </div>
+      </div>
+
+      <div class="card despesas">
+        <div class="card-body">
+            <div class="exit">
+            <h5 class="card-title outicon">Saídas</h5>
+            <img src="../../../assets/out.svg"  alt="seta verde apontada para cima">
+        </div>
+          <p class="card-text">{{totalDespesas | currency: 'BRL'}}</p>
+        </div>
+      </div>
+
+      <div class="card total">
+        <div class="card-body">
+            <div class="totalicon">
+            <h5 class="card-title total">Total</h5>
+            <img src="../../../assets/dolar.svg"  alt="seta verde apontada para cima">
+        </div>
+          <p class="card-text">{{totalMovimentacoes | currency: 'BRL'}}</p>
+        </div>
+      </div>
     </div>
 
     <div class="tabelamov">
