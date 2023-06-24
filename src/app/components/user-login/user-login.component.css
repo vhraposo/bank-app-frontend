@@ -64,3 +64,40 @@ h1 {
   height: auto;
 
 }
+
+.cardsmain {
+  display: flex;
+  gap: 30px;
+  width: 80%;
+
+
+  background-color: transparent;
+}
+
+.card {
+  flex: 1;
+  background-color: #323238;
+}
+
+.card-title{
+  font-size: 16px;
+  font-weight: 700;
+  color: #E1E1E6;
+}
+
+.card-text{
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 140%;
+  color: #E1E1E6;
+}
+
+.entry, .exit {
+  display: flex;
+  align-items: flex-end;
+}
+
+.inicon, .outicon{
+  flex: 1;
+
+}
