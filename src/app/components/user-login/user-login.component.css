@@ -28,6 +28,10 @@
   margin: 70px 25px;
 }
 
+.formedit{
+  margin: 0 auto;
+}
+
 .form-label{
   margin: 0;
   padding-left: 2px;
@@ -38,4 +42,13 @@
     flex-direction: column;
     margin: 0 auto;
   }
+  .infologin{
+    margin-bottom: 5px;
+  }
+
+  .infolog{
+    display: none;
+  }
+
+  
 }
