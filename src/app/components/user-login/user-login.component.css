@@ -1,94 +1,37 @@
-body {
-  background-color: #222;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  background-color: #64686570;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 50px auto;
-  width: 400px;
-
-}
-
-h1 {
-  color: #f25042;
-  text-align: center;
-}
-
-.form-label {
-  color: #fff;
-}
-
-.form-control {
-  background-color: #c2c2c2;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.btnlog{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-primary {
-  background-color: #FF8551;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 50%;
-  margin: 0 auto;
-
-}
-
-.btn-primary:hover {
-  background-color: #d6774e;
-}
 
 .logos{
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin-bottom: 30px;
+  width: 40%;
+  margin: 0 auto;
+  gap: 30px;
+  margin-left: 100px;
 }
+
+
 .logos img{
   max-height: 50px;
   height: auto;
 
 }
 
-.cardsmain {
-  display: flex;
-  gap: 30px;
-  width: 80%;
-
-
-  background-color: transparent;
+.boxtransform{
+  max-width: 480px;
+  width: 100%;
 }
 
-.card {
-  flex: 1;
-  background-color: #ff8551e4;;
+.infologin img{
+  max-height: 80px;
+  height: auto;
 }
 
-.card-title{
-  font-size: 16px;
-  font-weight: 700;
-  color: #E1E1E6;
+.jumnb{
+  padding: 70px 25px;
+  margin: 70px 25px;
 }
 
-.card-text{
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 140%;
-  color: #E1E1E6;
-}
 
+@media (max-width: 992px) {
+  .wrapper{
+    flex-direction: column;
+
+  }
+}

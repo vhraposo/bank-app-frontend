@@ -1,61 +1,40 @@
-<div class="container col-md-6">
+<div class="container d-flex flex-md-column flex-row wrapper">
+    <div class="jumbotron d-flex align-items-center jumnb">
 
-  <div class="logos">
-    <img src="../../../assets/Atos-Logo.png "  alt="">
-    <img src="../../../assets/UFN.png"  alt="">
+      <div class="d-flex flex-md-column flex-column">
 
-  </div>
+        <div class="infologin d-flex align-items-center ">
+          <img src="../../../assets/logo_fox.png" alt="">
+          <h2>FX Bank</h2>
+        </div>
 
-  <form [formGroup]="loginForm">
-    <div class="mb-3">
-      <label for="userId" class="form-label">Usuário</label>
-      <input type="text" formControlName="userId" class="form-control" id="userId" name="userId">
+        <div class="mx-auto p-2">
+          <h2>Faça seu login <br> na plataforma</h2>
+        </div>
+
     </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Senha</label>
-      <input type="password" formControlName="password" class="form-control" id="password" name="password">
+
+
+        <div class="container col-md-6 bg-body-secondary pt-3 pb-3 rounded boxtransform" >
+            <div class="logos d-flex  mb-3 ">
+              <img src="../../../assets/Atos-Logo.png "  alt="">
+              <img src="../../../assets/UFN.png"  alt="">
+            </div>
+            <form [formGroup]="loginForm" class="pt-2 pb-4">
+                <div class="mb-3">
+                  <label for="userId" class="form-label">Usuário</label>
+                  <input type="text" formControlName="userId" class="form-control" id="userId" name="userId">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Senha</label>
+                  <input type="password" formControlName="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="btnlog d-flex justify-content-center">
+                  <button type="submit" class="btn btn-outline-primary btn-lg " (click)="userLogin()">Login</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="btnlog">
-      <button type="submit" class="btn btn-primary" (click)="userLogin()">Login</button>
-    </div>
-  </form>
+
+
 </div>
-
-
-<div class="container cardsmain">
-
-  <div class="card receitas">
-    <div class="card-body">
-      <div class="entry">
-          <h5 class="card-title inicon">Entradas</h5>
-          <img src="../../../assets/in.svg"  alt="seta verde apontada para cima">
-      </div>
-      <p class="card-text">{{totalReceitas | currency: 'BRL'}}</p>
-    </div>
-  </div>
-
-  <div class="card despesas">
-    <div class="card-body">
-        <div class="exit">
-        <h5 class="card-title outicon">Saídas</h5>
-        <img src="../../../assets/out.svg"  alt="seta verde apontada para cima">
-    </div>
-      <p class="card-text">{{totalDespesas | currency: 'BRL'}}</p>
-    </div>
-  </div>
-
-  <div class="card total">
-    <div class="card-body">
-        <div class="totalicon">
-        <h5 class="card-title total">Total</h5>
-        <img src="../../../assets/dolar.svg"  alt="seta verde apontada para cima">
-    </div>
-      <p class="card-text">{{movimentacoes | currency: 'BRL'}}</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
