@@ -1,7 +1,7 @@
-<div class="container d-flex flex-md-column flex-row wrapper">
+<div class="container d-flex flex-column wrapper">
     <div class="jumbotron d-flex align-items-center jumnb">
 
-      <div class="d-flex flex-md-column flex-column">
+      <div class="d-flex flex-column">
 
         <div class="infologin d-flex align-items-center ">
           <img src="../../../assets/logo_fox.png" alt="">
@@ -12,29 +12,26 @@
           <h2>Faça seu login <br> na plataforma</h2>
         </div>
 
+      </div>
+
+      <div class="container bg-body-secondary pt-3 pb-3 rounded boxtransform">
+          <div class="logos d-flex mb-3">
+            <img src="../../../assets/Atos-Logo.png" alt="">
+            <img src="../../../assets/UFN.png" alt="">
+          </div>
+          <form [formGroup]="loginForm" class="pt-2 pb-4">
+              <div class="mb-3">
+                <label for="userId" class="form-label">Usuário</label>
+                <input type="text" formControlName="userId" class="form-control" id="userId" name="userId">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" formControlName="password" class="form-control" id="password" name="password">
+              </div>
+              <div class="btnlog d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary btn-lg" (click)="userLogin()">Login</button>
+              </div>
+          </form>
+      </div>
     </div>
-
-
-        <div class="container col-md-6 bg-body-secondary pt-3 pb-3 rounded boxtransform" >
-            <div class="logos d-flex  mb-3 ">
-              <img src="../../../assets/Atos-Logo.png "  alt="">
-              <img src="../../../assets/UFN.png"  alt="">
-            </div>
-            <form [formGroup]="loginForm" class="pt-2 pb-4">
-                <div class="mb-3">
-                  <label for="userId" class="form-label">Usuário</label>
-                  <input type="text" formControlName="userId" class="form-control" id="userId" name="userId">
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label">Senha</label>
-                  <input type="password" formControlName="password" class="form-control" id="password" name="password">
-                </div>
-                <div class="btnlog d-flex justify-content-center">
-                  <button type="submit" class="btn btn-outline-primary btn-lg " (click)="userLogin()">Login</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
 </div>
