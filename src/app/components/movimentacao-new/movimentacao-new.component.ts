@@ -52,7 +52,7 @@ export class MovimentacaoNewComponent implements OnInit {
 
   createMovimentacaoForm(): void {
     this.movimentacaoForm = this.formBuilder.group({
-      dataHora: [moment().format('YYYY-MM-DDTHH:mm:ss')],
+      dataHora: [''],
       correntista: [''],
       descricao: [''],
       tipo: [''],
@@ -122,7 +122,6 @@ export class MovimentacaoNewComponent implements OnInit {
 
       idConta: this.movimentacaoForm.get("correntista")?.value.id,
       dataHora: moment(this.movimentacaoForm.get("dataHora")?.value).format('YYYY-MM-DDTHH:mm:ss')
-
     }
 
     if (this.editMode) {

@@ -87,15 +87,4 @@ export class MovimentacaoListComponent implements OnInit {
       this.totalMovimentacoes = this.totalReceitas + Math.abs(this.totalDespesas);
 
   }
-
-  formatDate(date: Date): string {
-    const year = date.getFullYear()
-    const month = this.padNumber(date.getMonth() + 1)
-    const day = this.padNumber(date.getDate())
-    return `${year}-${month}-${day}`
-  }
-
-  padNumber(number: number): string {
-    return number < 10 ? '0' + number : number.toString()
-  }
 }

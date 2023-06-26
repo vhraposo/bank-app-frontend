@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { ToastrService } from 'ngx-toastr'
 import { CorrentistaService } from 'src/app/services/correntista.service'
 import { jsPDF } from 'jspdf'
@@ -6,8 +6,6 @@ import autoTable from 'jspdf-autotable'
 
 import { MovimentacaoService } from 'src/app/services/movimentacao.service'
 import { Router } from '@angular/router'
-
-
 
 @Component({
   selector: 'app-correntista',
@@ -34,7 +32,7 @@ export class CorrentistaComponent {
     private correntistaService: CorrentistaService,
     private movimentacaoService: MovimentacaoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
     ) {}
 
   ngOnInit(): void{
@@ -49,8 +47,7 @@ export class CorrentistaComponent {
       },
       error => {
         this.toastr.error("Não foi possível exibir os correntistas!")
-      }
-    )
+      })
   }
 
   save(): void{
@@ -72,8 +69,7 @@ export class CorrentistaComponent {
       },
       error => {
         this.toastr.error("Não foi possível cadastrar o correntista!")
-      }
-    )
+      })
   }
 
   editarCorrentista(correntista: any) {
@@ -89,7 +85,6 @@ export class CorrentistaComponent {
 
       id: correntista.id
     };
-
     this.router.navigate(['cadastro'], { queryParams })
   }
 
@@ -101,21 +96,16 @@ export class CorrentistaComponent {
       },
       (error) => {
         this.toastr.error('Não foi possível excluir o correntista!')
-      }
-    )
+      })
   }
-
-
   gerarRelatorio(item: any): void {
     const doc = new jsPDF()
 
-    // corpo do pdf
     doc.setFontSize(20)
     const title = 'Movimentações do Usuário';
     const titleFontSize = 20;
     const pageWidth = doc.internal.pageSize.getWidth();
     const titleWidth = doc.getStringUnitWidth(title) * titleFontSize / doc.internal.scaleFactor;
-
 
     const nome = item.nome;
     const cpf = item.cpf;
@@ -140,7 +130,6 @@ export class CorrentistaComponent {
     autoTable(doc, {
       body: tableData,
       startY: startY,
-
     })
 
     this.movimentacaoService.findByIdConta(item.id).subscribe(
