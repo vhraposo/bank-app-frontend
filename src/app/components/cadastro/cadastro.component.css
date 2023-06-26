@@ -1,11 +1,9 @@
-
-
-.fieldregister{
+.fieldregister {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.buttonsdiv{
+.buttonsdiv {
   margin: 0 auto;
 }

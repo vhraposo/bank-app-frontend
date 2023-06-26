@@ -1,11 +1,5 @@
-
-
-.buttons{
-
-
+.buttons {
   width: 900px;
-
-
   display: grid;
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr 1fr;
@@ -17,17 +11,24 @@
     "movimentações nova-movimentação"
     "correntistas novo-correntista";
 }
-.movimentações { grid-area: movimentações; }
-.nova-movimentação { grid-area: nova-movimentação; }
-.correntistas { grid-area: correntistas; }
-.novo-correntista { grid-area: novo-correntista; }
+.movimentações {
+  grid-area: movimentações;
+}
+.nova-movimentação {
+  grid-area: nova-movimentação;
+}
+.correntistas {
+  grid-area: correntistas;
+}
+.novo-correntista {
+  grid-area: novo-correntista;
+}
 
-.header{
+.header {
   text-align: center;
   margin-bottom: 80px;
 }
 
-
-.buttons a{
+.buttons a {
   padding-block: 20px;
 }

@@ -1,80 +1,80 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-6">Movimentações</h1>
-    <p class="lead-1">{{ listagemTitle }}</p>
-    <hr class="my-2">
-    <div class="input-group">
-      <select id="iCorrentista" [(ngModel)]="correntista" class="form-select">
-          <option value="">Todas as Movimentações</option>
-          <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
-      </select>
-        <button class="btn btn-outline-secondary me-md-2 btn-sm" type="button" (click)="listMovimentacoes()">Buscar</button>
-          <a class="btn btn-outline-primary btn-sm" routerLink="/mainscreen">Tela inicial</a>
+      <h1 class="display-6">Movimentações</h1>
+      <p class="lead-1">{{ listagemTitle }}</p>
+      <hr class="my-2">
+      <div class="input-group">
+        <select id="iCorrentista" [(ngModel)]="correntista" class="form-select">
+            <option value="">Todas as Movimentações</option>
+            <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
+        </select>
+          <button class="btn btn-outline-secondary me-md-2 btn-sm" type="button" (click)="listMovimentacoes()">Buscar</button>
+            <a class="btn btn-outline-primary btn-sm" routerLink="/mainscreen">Tela inicial</a>
 
     </div>
 
     <div class="container cardsmain">
 
-      <div class="card receitas">
-        <div class="card-body">
-          <div class="entry">
-              <h5 class="card-title inicon">Entradas</h5>
-              <img src="../../../assets/in.svg"  alt="seta verde apontada para cima">
+        <div class="card receitas">
+          <div class="card-body">
+            <div class="entry">
+                <h5 class="card-title inicon">Entradas</h5>
+                <img src="../../../assets/in.svg"  alt="seta verde apontada para cima">
+            </div>
+            <p class="card-text">{{totalReceitas | currency: 'BRL'}}</p>
           </div>
-          <p class="card-text">{{totalReceitas | currency: 'BRL'}}</p>
         </div>
-      </div>
 
-      <div class="card despesas">
-        <div class="card-body">
-            <div class="exit">
-            <h5 class="card-title outicon">Saídas</h5>
-            <img src="../../../assets/out.svg"  alt="seta verde apontada para cima">
+        <div class="card despesas">
+          <div class="card-body">
+              <div class="exit">
+              <h5 class="card-title outicon">Saídas</h5>
+              <img src="../../../assets/out.svg"  alt="seta verde apontada para cima">
+          </div>
+            <p class="card-text">{{totalDespesas | currency: 'BRL'}}</p>
+          </div>
         </div>
-          <p class="card-text">{{totalDespesas | currency: 'BRL'}}</p>
-        </div>
-      </div>
 
-      <div class="card total">
-        <div class="card-body">
-            <div class="totalicon">
-            <h5 class="card-title total">Total</h5>
-            <img src="../../../assets/dolar.svg"  alt="seta verde apontada para cima">
+        <div class="card total">
+          <div class="card-body">
+              <div class="totalicon">
+              <h5 class="card-title total">Total</h5>
+              <img src="../../../assets/dolar.svg"  alt="seta verde apontada para cima">
+          </div>
+            <p class="card-text">{{totalMovimentacoes | currency: 'BRL'}}</p>
+          </div>
         </div>
-          <p class="card-text">{{totalMovimentacoes | currency: 'BRL'}}</p>
-        </div>
-      </div>
     </div>
 
     <div class="tabelamov">
-      <table class="table table-striped mt-5">
+        <table class="table table-striped mt-5">
 
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Data</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Tipo</th>
-          </tr>
-        </thead>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Data</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Tipo</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <tr *ngFor="let item of movimentacoes; index as i">
-            <th scope="row">{{ i + 1}}</th>
-            <td>{{ item.dataHora | date: 'dd/MM/yyyy' }}</td>
-            <td>{{ item.descricao }}</td>
-            <td [ngStyle]="{'color':item.tipo === 'RECEITA' ? 'green' : 'red'}">{{ item.valor | currency: 'BRL' }}</td>
-            <td>{{ item.tipo }}</td>
-            <td>
-              <a routerLink="/movimentacoes-new" [queryParams]="{ edit: true, id: item.id }" routerLinkActive="active">
-                <i class="fas fa-edit"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
+            <tbody>
+              <tr *ngFor="let item of movimentacoes; index as i">
+                <th scope="row">{{ i + 1}}</th>
+                <td>{{ item.dataHora | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ item.descricao }}</td>
+                <td [ngStyle]="{'color':item.tipo === 'RECEITA' ? 'green' : 'red'}">{{ item.valor | currency: 'BRL' }}</td>
+                <td>{{ item.tipo }}</td>
+                <td>
+                  <a routerLink="/movimentacoes-new" [queryParams]="{ edit: true, id: item.id }" routerLinkActive="active">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
 
-      </table>
+        </table>
     </div>
   </div>
 </div>

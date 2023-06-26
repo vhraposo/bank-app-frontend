@@ -2,42 +2,43 @@
   <div class="jumbotron">
     <p class="lead-1">Detalhes do correntista</p>
     <hr class="my-2">
-
     <form [formGroup]="cadastroForm">
       <div class="container fieldregister">
         <div class="row g-1">
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="iNome" formControlName="nome" placeholder="Nome do Correntista" required>
+            <input type="text" class="form-control" id="iNome" formControlName="nome" placeholder="Nome do Correntista"
+              required>
           </div>
 
-            <div class="col-md-4">
-              <input class="form-control" id="iCpf" formControlName="cpf" placeholder="CPF" mask="000.000.000-00">
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iCpf" formControlName="cpf" placeholder="CPF" mask="000.000.000-00">
+          </div>
 
-            <div class="col-md-4">
-              <input  class="form-control" id="iCep" formControlName="cep" placeholder="CEP" (blur)="fetchAddress()" mask="00000-000">
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iCep" formControlName="cep" placeholder="CEP" (blur)="fetchAddress()"
+              mask="00000-000">
+          </div>
 
 
-            <div class="col-md-4">
-              <input class="form-control" id="iLogradouro" formControlName="logradouro" placeholder="Logradouro">
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iLogradouro" formControlName="logradouro" placeholder="Logradouro">
+          </div>
 
-            <div class="col-md-4">
-              <input class="form-control" id="iComplemento" formControlName="complemento" placeholder="Complemento">
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iComplemento" formControlName="complemento" placeholder="Complemento">
+          </div>
 
-            <div class="col-md-4">
-              <input class="form-control" id="iBairro" formControlName="bairro" placeholder="Bairro">
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iBairro" formControlName="bairro" placeholder="Bairro">
+          </div>
 
-            <div class="col-md-4">
-              <input class="form-control" id="iCidade" formControlName="cidade" placeholder="Cidade" >
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iCidade" formControlName="cidade" placeholder="Cidade">
+          </div>
 
-            <div class="col-md-4">
-              <input class="form-control" id="iEstado" formControlName="estado" placeholder="Estado" >
-            </div>
+          <div class="col-md-4">
+            <input class="form-control" id="iEstado" formControlName="estado" placeholder="Estado">
+          </div>
         </div>
 
         <div class="col-3 buttonsdiv">

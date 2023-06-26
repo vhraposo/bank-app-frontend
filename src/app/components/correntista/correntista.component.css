@@ -1,14 +1,12 @@
-.row{
-
- justify-content: center;
-
+.row {
+  justify-content: center;
 }
 
-.mb-4{
+.mb-4 {
   width: fit-content;
 }
 
-.pen{
+.pen {
   border: none;
   background-color: transparent;
 
@@ -19,17 +17,19 @@
   margin-top: 17px;
 }
 
-.pen:hover{
+.pen:hover {
   cursor: pointer;
   scale: 1.2;
 }
 
-.pen:hover svg path{fill: blue;}
+.pen:hover svg path {
+  fill: blue;
+}
 
-.mtitle{
+.mtitle {
   padding-left: 30px;
 }
 
-.botoes{
+.botoes {
   padding-right: 50px;
 }

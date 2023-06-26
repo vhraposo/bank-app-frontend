@@ -1,41 +1,43 @@
 <div class="container">
   <div class="jumbotron">
-      <h1 class="display-6">Movimentação</h1>
-      <p class="lead-1">Inclusão de uma nova movimentação</p>
-      <hr class="my-2">
-      <form [formGroup]="movimentacaoForm">
-          <div class="row g-2">
-              <div class="col-md-3">
-                <label for="iData" class="form-label">Data</label>
-                <input type="date" formControlName="dataHora" class="form-control" id="iData">
-              </div>
-              <div class="col-md-6">
-                <label for="iCorrentista" class="form-label">Correntista</label>
-                <select id="iCorrentista" formControlName="correntista" class="form-select">
-                  <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
-                </select>
-              </div>
-              <div class="col-9">
-                <label for="iDescricao" class="form-label">Descrição</label>
-                <input type="text" formControlName="descricao" class="form-control" id="iDescricao" placeholder="Informe uma descrição">
-              </div>
-              <div class="col-md-5">
-                <label for="iTipo" class="form-label">Tipo Movimentação</label>
-                <select id="iTipo" class="form-select" formControlName="tipo">
-                  <option selected>RECEITA</option>
-                  <option>DESPESA</option>
-                </select>
-              </div>
-              <div class="col-md-4">
-                <label for="iValor"  class="form-label">R$ Valor</label>
-                <input autocomplete="off" type="text" formControlName="valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" id="iValor">
-              </div>
-              <div class="d-grid gap-2 d-md-flex ">
-                  <button class="btn btn-outline-primary me-md-2" (click)="save()" type="button">Confirmar</button>
-                  <a routerLink="/movimentacoes" class="btn btn-outline-secondary">Cancelar</a>
-                </div>
-          </div>
-      </form>
-    </div>
+    <h1 class="display-6">Movimentação</h1>
+    <p class="lead-1">Inclusão de uma nova movimentação</p>
+    <hr class="my-2">
+    <form [formGroup]="movimentacaoForm">
+      <div class="row g-2">
+        <div class="col-md-3">
+          <label for="iData" class="form-label">Data</label>
+          <input type="date" formControlName="dataHora" class="form-control" id="iData">
+        </div>
+        <div class="col-md-6">
+          <label for="iCorrentista" class="form-label">Correntista</label>
+          <select id="iCorrentista" formControlName="correntista" class="form-select">
+            <option *ngFor="let c of correntistas" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
+          </select>
+        </div>
+        <div class="col-9">
+          <label for="iDescricao" class="form-label">Descrição</label>
+          <input type="text" formControlName="descricao" class="form-control" id="iDescricao"
+            placeholder="Informe uma descrição">
+        </div>
+        <div class="col-md-5">
+          <label for="iTipo" class="form-label">Tipo Movimentação</label>
+          <select id="iTipo" class="form-select" formControlName="tipo">
+            <option selected>RECEITA</option>
+            <option>DESPESA</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="iValor" class="form-label">R$ Valor</label>
+          <input autocomplete="off" type="text" formControlName="valor" currencyMask
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" id="iValor">
+        </div>
+        <div class="d-grid gap-2 d-md-flex ">
+          <button class="btn btn-outline-primary me-md-2" (click)="save()" type="button">Confirmar</button>
+          <a routerLink="/movimentacoes" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </div>

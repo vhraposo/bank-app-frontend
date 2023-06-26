@@ -62,7 +62,6 @@ export class CorrentistaComponent {
       bairro: this.bairro,
       cidade: this.cidade,
       estado: this.estado
-
     }
     this.correntistaService.create(correntista)
     .subscribe(
@@ -86,8 +85,6 @@ export class CorrentistaComponent {
       bairro: correntista.bairro,
       cidade: correntista.cidade,
       estado: correntista.estado,
-
-
 
       id: correntista.id
     };
@@ -132,14 +129,11 @@ export class CorrentistaComponent {
 
     })
 
-    //buscando as movimentações no bd por id da conta
     this.movimentacaoService.findByIdConta(item.id).subscribe(
       data => {
         this.movimentacoes = data;
 
-        // aqui vai adicionar  as receitas e desoesas no pdf
         doc.setFontSize(16)
-        //  pegando as receitas e despesas
           const despesas = this.movimentacoes.filter((item: any) => item.tipo === 'DESPESA')
           const receitas = this.movimentacoes.filter((item: any) => item.tipo === 'RECEITA')
           const tableData = [['Despesas', 'R$', 'Receitas', 'R$']];
@@ -152,7 +146,6 @@ export class CorrentistaComponent {
               i < receitas.length ? receitas[i].descricao : '',
               i < receitas.length ? `R$ ${receitas[i].valor}` : ''
             ]
-
             tableData.push(rowData);
           }
         const pageSize = doc.internal.pageSize
@@ -166,8 +159,6 @@ export class CorrentistaComponent {
           startY: startY
         })
           doc.save(`Relatorio ${item.nome}-Fx Bank.pdf`)
-
       })
   }
-
 }

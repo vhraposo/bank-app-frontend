@@ -1,54 +1,53 @@
+* {
+   scrollbar-width: none;
+   scrollbar-color: #ff8551 transparent;
+ }
 .tabelamov{
  max-height: 550px;
   overflow-y: scroll;
 }
 
-  * {
-    scrollbar-width: none;
-    scrollbar-color: #ff8551 transparent;
-  }
 
-  .tabelamov::-webkit-scrollbar {
-    width: 15px;
-  }
+.tabelamov::-webkit-scrollbar {
+  width: 15px;
+}
 
-  .tabelamov::-webkit-scrollbar-track {
-    margin-block-start: 50px;
-    margin-block-end: 17px;
-  }
+.tabelamov::-webkit-scrollbar-track {
+  margin-block-start: 50px;
+  margin-block-end: 17px;
+}
 
-  .tabelamov::-webkit-scrollbar-thumb {
-    background-color: #ff8551;
-    border-radius: 20px;
-    border: 3px solid #fcfcfc;
-  }
+.tabelamov::-webkit-scrollbar-thumb {
+  background-color: #ff8551;
+  border-radius: 20px;
+  border: 3px solid #fcfcfc;
+}
 
-  .cardsmain {
-    margin-top: 20px;
-    display: flex;
-    gap: 30px;
-    width: 80%;
+.cardsmain {
+  margin-top: 20px;
+  display: flex;
+  gap: 30px;
+  width: 80%;
 
+  background-color: transparent;
+}
 
-    background-color: transparent;
-  }
+.card {
+  flex: 1;
+  background-color: #ff8551e4;
+}
 
-  .card {
-    flex: 1;
-    background-color: #ff8551e4;
-  }
+.card-title{
+  font-size: 16px;
+  font-weight: 700;
+  color: #E1E1E6;
+}
 
-  .card-title{
-    font-size: 16px;
-    font-weight: 700;
-    color: #E1E1E6;
-  }
-
-  .card-text{
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 140%;
-    color: #E1E1E6;
-  }
+.card-text{
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 140%;
+  color: #E1E1E6;
+}
 
 
