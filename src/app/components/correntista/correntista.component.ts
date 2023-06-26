@@ -93,6 +93,19 @@ export class CorrentistaComponent {
     this.router.navigate(['cadastro'], { queryParams })
   }
 
+  excluirCorrentista(id: number): void {
+    this.correntistaService.delete(id).subscribe(
+      () => {
+        this.toastr.success('Correntista excluído com sucesso!')
+        this.exibirCorrentistas()
+      },
+      (error) => {
+        this.toastr.error('Não foi possível excluir o correntista!')
+      }
+    )
+  }
+
+
   gerarRelatorio(item: any): void {
     const doc = new jsPDF()
 

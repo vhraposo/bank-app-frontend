@@ -22,4 +22,10 @@ export class CorrentistaService {
     const url = `${baseUrl}/correntistas/${correntistaId}`;
     return this.http.put(url, correntista);
   }
+
+  delete(id: number): Observable<any> {
+    const url = `${baseUrl}/correntistas/${id}`;
+    return this.http.delete(url);
+  }
+
 }
