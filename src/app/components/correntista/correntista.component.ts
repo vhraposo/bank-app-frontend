@@ -45,6 +45,7 @@ export class CorrentistaComponent {
     .subscribe(
       data => {
         this.correntistas = data
+        this.correntistas = data.sort((a: any, b: any) => a.nome.localeCompare(b.nome))
       },
       error => {
         this.toastr.error("Não foi possível exibir os correntistas!")
