@@ -6,10 +6,12 @@
   width: fit-content;
 }
 
-.pen {
-  border: none;
-  background-color: transparent;
+h5{
+  padding-right: 57px;
+}
 
+.buttonsdiv{
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;
@@ -17,13 +19,22 @@
   margin-top: 17px;
 }
 
-.pen:hover {
+.pen, .trash {
+  border: none;
+  background-color: transparent;
+}
+
+.pen:hover, .trash:hover {
   cursor: pointer;
   scale: 1.2;
 }
 
 .pen:hover svg path {
   fill: blue;
+}
+
+.trash:hover svg path {
+  fill: red;
 }
 
 .mtitle {
