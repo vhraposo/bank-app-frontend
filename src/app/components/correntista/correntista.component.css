@@ -1,5 +1,5 @@
 .row {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .mb-4 {
@@ -37,10 +37,8 @@ h5{
   fill: red;
 }
 
-.mtitle {
-  padding-left: 30px;
-}
+
 
 .botoes {
-  padding-right: 50px;
+  padding-right: 75px;
 }
