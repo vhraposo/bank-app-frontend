@@ -5,6 +5,8 @@ import { LoginuserService } from 'src/app/services/loginuser.service'
 import { User } from 'src/app/user'
 import { ToastrService } from 'ngx-toastr'
 import { FormBuilder, FormGroup } from '@angular/forms'
+import { AuthService } from 'src/app/services/auth-service.service';
+
 
 @Component({
   selector: 'app-user-login',
@@ -22,7 +24,8 @@ export class UserLoginComponent implements OnInit {
     private movimentacaoService: MovimentacaoService,
     private toastr: ToastrService,
     private router: Router,
-    private FormBuilder: FormBuilder
+    private FormBuilder: FormBuilder,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -30,12 +33,15 @@ export class UserLoginComponent implements OnInit {
     this.listMov()
   }
 
+
+
   userLogin() {
     const user = new User()
     user.userId = this.loginForm.get("userId")?.value
     user.password = this.loginForm.get("password")?.value
     this.loginuserService.loginUser(user).subscribe(
       data => {
+        this.authService.login();
         this.toastr.success('Login realizado com sucesso!')
         this.router.navigate(['/mainscreen'])
       },
