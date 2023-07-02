@@ -1,12 +1,10 @@
-import { MovimentacaoService } from './../../services/movimentacao.service';
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
-import { LoginuserService } from 'src/app/services/loginuser.service'
-import { User } from 'src/app/user'
-import { ToastrService } from 'ngx-toastr'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginuserService } from 'src/app/services/loginuser.service';
+import { User } from 'src/app/user';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service.service';
-
 
 @Component({
   selector: 'app-user-login',
@@ -14,34 +12,28 @@ import { AuthService } from 'src/app/services/auth-service.service';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  movimentacoes: any
-  totalReceitas = 0
-  totalDespesas = 0
-  loginForm: FormGroup
+  loginForm: FormGroup;
 
   constructor(
     private loginuserService: LoginuserService,
-    private movimentacaoService: MovimentacaoService,
     private toastr: ToastrService,
     private router: Router,
-    private FormBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.createloginForm()
-    this.listMov()
+    this.createLoginForm()
   }
-
-
 
   userLogin() {
     const user = new User()
     user.userId = this.loginForm.get("userId")?.value
     user.password = this.loginForm.get("password")?.value
     this.loginuserService.loginUser(user).subscribe(
-      data => {
-        this.authService.login();
+      (data: any) => {
+        const token = data.token
+        this.authService.login(token)
         this.toastr.success('Login realizado com sucesso!')
         this.router.navigate(['/mainscreen'])
       },
@@ -51,32 +43,10 @@ export class UserLoginComponent implements OnInit {
     )
   }
 
-  createloginForm(): void{
-    this.loginForm = this.FormBuilder.group({
+  createLoginForm(): void {
+    this.loginForm = this.formBuilder.group({
       userId: [''],
       password: ['']
     })
-  }
-
-  listMov():void{
-    this.movimentacaoService.list().subscribe(
-      data => {
-        this.movimentacoes = data
-        console.log(data)
-        this.calcularmovimentacoes()
-      }  )
-  }
-
-  calcularmovimentacoes(): void {
-    this.totalReceitas = this.movimentacoes
-      .filter((item: any) => item.tipo === 'RECEITA')
-      .reduce((acc: number, item: any) => acc + item.valor, 0)
-
-    this.totalDespesas = this.movimentacoes
-      .filter((item: any) => item.tipo === 'DESPESA')
-      .reduce((acc: number, item: any) => acc + item.valor, 0)
-
-      this.movimentacoes = this.totalReceitas + Math.abs(this.totalDespesas)
-
   }
 }
