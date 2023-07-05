@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginuserService {
   // private baseUrl = "http://localhost:8080/user/login";
-  private baseUrl = "http://slow-corn-production.up.railway.app/user/login";
+  private baseUrl = "https://slow-corn-production.up.railway.app/user/login";
 
   constructor(private httpClient: HttpClient) { }
 
