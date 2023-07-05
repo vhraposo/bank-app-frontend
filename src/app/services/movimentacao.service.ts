@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080';
+// const baseUrl = 'http://localhost:8080'
+const baseUrl = 'slow-corn-production.up.railway.app'
 
 @Injectable({
   providedIn: 'root'
