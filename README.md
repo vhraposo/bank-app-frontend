@@ -33,7 +33,7 @@ JWT :closed_lock_with_key: <br>
 Angular :a: <br>
 Bootstrap :globe_with_meridians: <br>
 
-##Deploy 
+## Deploy 
 - Acesse a aplicação online através do link : https://fxbank.vercel.app/  <br>
   Usuário teste : admin  <br>
   senha teste   : 12345
