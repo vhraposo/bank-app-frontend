@@ -40,14 +40,17 @@
 .card-title{
   font-size: 16px;
   font-weight: 700;
-  color: #E1E1E6;
+  color: #ffffff;
 }
 
 .card-text{
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
-  color: #E1E1E6;
+  color: #ffffff;
 }
 
-
+.mainbutton{
+  display: flex;
+  align-items: center;
+}
