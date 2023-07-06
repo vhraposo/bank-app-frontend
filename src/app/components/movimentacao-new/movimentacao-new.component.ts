@@ -62,24 +62,25 @@ export class MovimentacaoNewComponent implements OnInit {
 
 
   getMovimentacaoById(id: string): void {
-
-    this.movimentacaoService.findById(id).subscribe(
-      data => {
-        this.movimentacaoForm.patchValue({
-          dataHora: moment(data.dataHora).format("YYYY-MM-DD"),
-          correntista: this.correntistas.find((correntista:any) => correntista.id === data.idConta),
-          descricao: data.descricao,
-          tipo: data.tipo,
-          valor: data.valor,
-
-        })
-        this.changeDetector.detectChanges()
-      },
-      error => {
-        this.toastr.error("Erro ao obter ao obter a movimentação!")
-      }
-    )
+    setTimeout(() => {
+      this.movimentacaoService.findById(id).subscribe(
+        data => {
+          this.movimentacaoForm.patchValue({
+            dataHora: moment(data.dataHora).format("YYYY-MM-DD"),
+            correntista: this.correntistas.find((correntista: any) => correntista.id === data.idConta),
+            descricao: data.descricao,
+            tipo: data.tipo,
+            valor: data.valor,
+          });
+          this.changeDetector.detectChanges()
+        },
+        error => {
+          this.toastr.error("Erro ao obter a movimentação!")
+        }
+      )
+    }, 400)
   }
+
 
   exibirCorrentistas(): void {
     this.correntistaService.list().subscribe(
