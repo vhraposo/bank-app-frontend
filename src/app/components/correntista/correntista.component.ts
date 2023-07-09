@@ -6,6 +6,8 @@ import autoTable from 'jspdf-autotable'
 
 import { MovimentacaoService } from 'src/app/services/movimentacao.service'
 import { Router } from '@angular/router'
+import { MatDialog } from '@angular/material/dialog'
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'
 
 @Component({
   selector: 'app-correntista',
@@ -33,6 +35,7 @@ export class CorrentistaComponent {
     private movimentacaoService: MovimentacaoService,
     private toastr: ToastrService,
     private router: Router,
+    public dialog: MatDialog
     ) {}
 
   ngOnInit(): void{
@@ -89,14 +92,25 @@ export class CorrentistaComponent {
   }
 
   excluirCorrentista(id: number): void {
-    this.correntistaService.delete(id).subscribe(
-      () => {
-        this.toastr.success('Correntista excluído com sucesso!')
-        this.exibirCorrentistas()
-      },
-      (error) => {
-        this.toastr.error('Não foi possível excluir o correntista!')
-      })
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: 'Tem certeza que deseja remover este correntista?',
+    })
+
+    dialogRef.afterClosed().subscribe((result : boolean) => {
+      if(result){
+        this.correntistaService.delete(id).subscribe(
+          () => {
+            this.toastr.success('Correntista excluído com sucesso!')
+            this.exibirCorrentistas()
+          },
+          (error) => {
+            this.toastr.error('Não foi possível excluir o correntista!')
+          })
+      }
+    })
+
+
   }
   gerarRelatorio(item: any): void {
     const doc = new jsPDF()

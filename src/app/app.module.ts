@@ -18,6 +18,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { MainScreenComponent } from './components/main-screen/main-screen.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 
 registerLocaleData(localePt);
@@ -31,6 +35,7 @@ registerLocaleData(localePt);
     UserLoginComponent,
     CadastroComponent,
     MainScreenComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ registerLocaleData(localePt);
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    MatDialogModule,
+    MatButtonModule
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'  }, provideNgxMask()],
