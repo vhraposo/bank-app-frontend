@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core'
-import { FormGroup } from '@angular/forms'
-import { ActivatedRoute } from '@angular/router'
-import { ToastrService } from 'ngx-toastr'
-import { MovimentacaoService } from 'src/app/services/movimentacao.service'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { MovimentacaoService } from 'src/app/services/movimentacao.service';
 
-import { CorrentistaService } from './../../services/correntista.service'
+import { CorrentistaService } from './../../services/correntista.service';
 
 
 @Component({
@@ -21,22 +23,24 @@ export class MovimentacaoListComponent implements OnInit {
   totalReceitas = 0
   totalDespesas = 0
   editMode = false
-
   movimentacaoForm!: FormGroup
+
+  dataSource: MatTableDataSource<MovimentacaoService>
+  @ViewChild(MatPaginator) paginator!: MatPaginator
 
   constructor(
     private movimentacaoService: MovimentacaoService,
     private correntistaService: CorrentistaService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-  ) {}
+  ) {
+    this.dataSource = new MatTableDataSource<MovimentacaoService>()
+  }
 
   ngOnInit(): void {
     this.exibirCorrentistas()
     this.listMovimentacoes()
-
   }
-
 
   exibirCorrentistas(): void {
     this.correntistaService.list().subscribe(
@@ -46,7 +50,7 @@ export class MovimentacaoListComponent implements OnInit {
       error => {
         this.toastr.error("Não foi possível exibir os correntistas")
       }
-    )
+    );
   }
 
   listMovimentacoes(): void {
@@ -56,22 +60,26 @@ export class MovimentacaoListComponent implements OnInit {
           this.movimentacoes = data
           this.calcularTotais()
           this.listagemTitle = 'Listagem das movimentações por correntista'
+          this.dataSource = new MatTableDataSource<MovimentacaoService>(this.movimentacoes)
+          this.dataSource.paginator = this.paginator
         },
         error => {
-          this.toastr.error("Erro ao listar as movimentações por correntista!")
+          this.toastr.error("Erro ao listar as movimentações por correntista!");
         }
-      )
+      );
     } else {
       this.movimentacaoService.list().subscribe(
         data => {
           this.movimentacoes = data
           this.calcularTotais()
           this.listagemTitle = 'Listagem de todas as movimentações'
+          this.dataSource = new MatTableDataSource<MovimentacaoService>(this.movimentacoes)
+          this.dataSource.paginator = this.paginator
         },
         error => {
           this.toastr.error("Erro ao listar as movimentações!")
         }
-      )
+      );
     }
   }
 
@@ -84,7 +92,6 @@ export class MovimentacaoListComponent implements OnInit {
       .filter((item: any) => item.tipo === 'DESPESA')
       .reduce((acc: number, item: any) => acc + item.valor, 0)
 
-      this.totalMovimentacoes = this.totalReceitas + Math.abs(this.totalDespesas);
-
+    this.totalMovimentacoes = this.totalReceitas + Math.abs(this.totalDespesas)
   }
 }
