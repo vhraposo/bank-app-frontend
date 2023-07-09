@@ -107,8 +107,10 @@ export class CorrentistaComponent {
     const pageWidth = doc.internal.pageSize.getWidth();
     const titleWidth = doc.getStringUnitWidth(title) * titleFontSize / doc.internal.scaleFactor;
 
-    const nome = item.nome;
-    const cpf = item.cpf;
+    const nome = item.nome
+    const cpf = item.cpf
+    const cidade = item.cidade
+    const estado = item.estado
     const logradouro = item.logradouro
     const complemento = item.complemento
     const numeroConta = item.conta.numero
@@ -118,6 +120,7 @@ export class CorrentistaComponent {
       ['Nome', nome],
       ['CPF', cpf],
       ['Endereço', logradouro + (complemento ? ', ' + complemento : '')],
+      ['Cidade/Estado', cidade +',' + estado],
       ['Conta N°', numeroConta],
       ['Saldo Atual', saldoAtual]
     ];
