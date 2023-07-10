@@ -31,7 +31,10 @@ Spring Boot 3 :seedling: <br>
 MySQL :floppy_disk: <br>
 JWT :closed_lock_with_key: <br>
 Angular :a: <br>
+Angular Material :art: <br>
 Bootstrap :globe_with_meridians: <br>
+
+Figma: [Clique aqui para ver o layout](https://www.figma.com/file/e8MW6amC0658cue55sSa2U/Atos---Projeto-Final?type=design&node-id=0%3A1&mode=design&t=KxHNMBgFOkE4TYH5-1)
 
 ## Deploy 
 - Acesse a aplicação online através do link : https://fxbank.vercel.app/  <br>
