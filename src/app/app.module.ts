@@ -24,7 +24,8 @@ import { MovimentacaoNewComponent } from './components/movimentacao-new/moviment
 import { UserLoginComponent } from './components/user-login/user-login.component';
 
 
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { CustomPaginator } from 'src/app/components/CustomPaginator';
 
 
 registerLocaleData(localePt);
@@ -58,7 +59,9 @@ registerLocaleData(localePt);
     MatTableModule
 
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'  }, provideNgxMask()],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR'},
+    { provide: MatPaginatorIntl, useClass: CustomPaginator }, provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
