@@ -1,8 +1,8 @@
-# FX Bank
+# FX Money
 
 ## Descrição
 
-🏦 FX Bank é uma aplicação web desenvolvida para permitir que os usuários administradores acessem e visualizem todo o histórico de seus clientes. O projeto utiliza tecnologias como MySQL como banco de dados, Java 17 com Spring Boot 3, JWT, Angular, Bootstrap e jsPDF.
+🏦 FX Money é uma aplicação web desenvolvida para permitir que os usuários administradores acessem e visualizem todo o histórico de seus clientes. O projeto utiliza tecnologias como MySQL como banco de dados, Java 17 com Spring Boot 3, JWT, Angular, Angular Material, Bootstrap e jsPDF.
 
 - Este projeto foi desenvolvido para como desafio final da 5 academia de Java da Atos/Ufn
  
