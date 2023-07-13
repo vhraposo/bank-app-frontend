@@ -54,3 +54,8 @@
   display: flex;
   align-items: center;
 }
+
+.form-select:focus{
+  box-shadow: none;
+  border: none;
+}
